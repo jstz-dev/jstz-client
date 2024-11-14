@@ -46,6 +46,9 @@ export namespace Receipt {
 
       body: Array<number> | null;
 
+      /**
+       * Any valid HTTP headers
+       */
       headers: Record<string, unknown>;
 
       /**
@@ -82,6 +85,9 @@ export namespace Receipt {
       export interface RunFunction {
         body: Array<number> | null;
 
+        /**
+         * Any valid HTTP headers
+         */
         headers: Record<string, unknown>;
 
         /**
