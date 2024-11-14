@@ -14,7 +14,7 @@ export class ReceiptResource extends APIResource {
 }
 
 export interface Receipt {
-  hash: string;
+  hash: Array<number>;
 
   inner: Receipt.ReceiptContent | Receipt.Err;
 }
