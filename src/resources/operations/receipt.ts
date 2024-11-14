@@ -16,22 +16,22 @@ export class ReceiptResource extends APIResource {
 export interface Receipt {
   hash: string;
 
-  inner: Receipt.UnionMember0 | Receipt.Err;
+  inner: Receipt.ReceiptContent | Receipt.Err;
 }
 
 export namespace Receipt {
-  export interface UnionMember0 {
+  export interface ReceiptContent {
     _type: 'Ok';
 
     inner:
-      | UnionMember0.DeployFunction
-      | UnionMember0.RunFunction
-      | UnionMember0.Deposit
-      | UnionMember0.FaDeposit
-      | UnionMember0.FaWithdraw;
+      | ReceiptContent.DeployFunction
+      | ReceiptContent.RunFunction
+      | ReceiptContent.Deposit
+      | ReceiptContent.FaDeposit
+      | ReceiptContent.FaWithdraw;
   }
 
-  export namespace UnionMember0 {
+  export namespace ReceiptContent {
     export interface DeployFunction {
       _type: 'DeployFunction';
 
