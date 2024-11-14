@@ -15,14 +15,14 @@ export class ReceiptResource extends APIResource {
 export interface Receipt {
   hash: string;
 
-  inner: Receipt.UnionMember0 | Receipt.Type;
+  inner: Receipt.UnionMember0 | Receipt._Type;
 }
 
 export namespace Receipt {
   export interface UnionMember0 {}
 
-  export interface Type {
-    '#type': 'Err';
+  export interface _Type {
+    _type: 'Err';
   }
 }
 

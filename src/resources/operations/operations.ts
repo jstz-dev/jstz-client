@@ -48,7 +48,7 @@ export namespace OperationInjectParams {
 
   export namespace Inner {
     export interface DeployFunction {
-      '#type': 'DeployFunction';
+      _type: 'DeployFunction';
 
       /**
        * Amount of tez to credit to the smart function account, debited from the sender
@@ -62,7 +62,7 @@ export namespace OperationInjectParams {
     }
 
     export interface RunFunction {
-      '#type': 'RunFunction';
+      _type: 'RunFunction';
 
       body: Array<number> | null;
 
