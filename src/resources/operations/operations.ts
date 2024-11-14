@@ -71,6 +71,9 @@ export namespace OperationInjectParams {
        */
       gas_limit: number;
 
+      /**
+       * Any valid HTTP headers
+       */
       headers: Record<string, unknown>;
 
       /**
