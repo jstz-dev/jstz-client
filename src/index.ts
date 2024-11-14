@@ -13,7 +13,7 @@ export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['JSTZ_BASE_URL'].
+   * Defaults to process.env['TRILITECH_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -68,15 +68,15 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Jstz API.
+ * API Client for interfacing with the Trilitech API.
  */
-export class Jstz extends Core.APIClient {
+export class Trilitech extends Core.APIClient {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Jstz API.
+   * API Client for interfacing with the Trilitech API.
    *
-   * @param {string} [opts.baseURL=process.env['JSTZ_BASE_URL'] ?? https://localhost:8933] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['TRILITECH_BASE_URL'] ?? https://localhost:8933] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -84,7 +84,7 @@ export class Jstz extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('JSTZ_BASE_URL'), ...opts }: ClientOptions = {}) {
+  constructor({ baseURL = Core.readEnv('TRILITECH_BASE_URL'), ...opts }: ClientOptions = {}) {
     const options: ClientOptions = {
       ...opts,
       baseURL: baseURL || `https://localhost:8933`,
@@ -116,10 +116,10 @@ export class Jstz extends Core.APIClient {
     };
   }
 
-  static Jstz = this;
+  static Trilitech = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static JstzError = Errors.JstzError;
+  static TrilitechError = Errors.TrilitechError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -137,10 +137,10 @@ export class Jstz extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-Jstz.Accounts = Accounts;
-Jstz.Logs = Logs;
-Jstz.Operations = Operations;
-export declare namespace Jstz {
+Trilitech.Accounts = Accounts;
+Trilitech.Logs = Logs;
+Trilitech.Operations = Operations;
+export declare namespace Trilitech {
   export type RequestOptions = Core.RequestOptions;
 
   export { Accounts as Accounts };
@@ -150,9 +150,9 @@ export declare namespace Jstz {
   export { Operations as Operations, type OperationCreateParams as OperationCreateParams };
 }
 
-export { toFile, fileFromPath } from 'jstz/uploads';
+export { toFile, fileFromPath } from 'jstz-client/uploads';
 export {
-  JstzError,
+  TrilitechError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -165,6 +165,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from 'jstz/error';
+} from 'jstz-client/error';
 
-export default Jstz;
+export default Trilitech;

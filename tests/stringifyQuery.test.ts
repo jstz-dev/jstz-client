@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { Jstz } from 'jstz';
+import { Trilitech } from 'jstz-client';
 
-const { stringifyQuery } = Jstz.prototype as any;
+const { stringifyQuery } = Trilitech.prototype as any;
 
 describe(stringifyQuery, () => {
   for (const [input, expected] of [

@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Jstz from 'jstz';
+import Trilitech from 'jstz-client';
 import { Response } from 'node-fetch';
 
-const client = new Jstz({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
+const client = new Trilitech({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource operations', () => {
   test('create: only required params', async () => {

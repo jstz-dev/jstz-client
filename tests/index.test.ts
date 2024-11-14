@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Jstz from 'jstz';
-import { APIUserAbortError } from 'jstz';
-import { Headers } from 'jstz/core';
+import Trilitech from 'jstz-client';
+import { APIUserAbortError } from 'jstz-client';
+import { Headers } from 'jstz-client/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
 describe('instantiate client', () => {
@@ -20,7 +20,7 @@ describe('instantiate client', () => {
   });
 
   describe('defaultHeaders', () => {
-    const client = new Jstz({
+    const client = new Trilitech({
       baseURL: 'http://localhost:5000/',
       defaultHeaders: { 'X-My-Default-Header': '2' },
     });
@@ -51,12 +51,15 @@ describe('instantiate client', () => {
 
   describe('defaultQuery', () => {
     test('with null query params given', () => {
-      const client = new Jstz({ baseURL: 'http://localhost:5000/', defaultQuery: { apiVersion: 'foo' } });
+      const client = new Trilitech({
+        baseURL: 'http://localhost:5000/',
+        defaultQuery: { apiVersion: 'foo' },
+      });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/foo?apiVersion=foo');
     });
 
     test('multiple default query params', () => {
-      const client = new Jstz({
+      const client = new Trilitech({
         baseURL: 'http://localhost:5000/',
         defaultQuery: { apiVersion: 'foo', hello: 'world' },
       });
@@ -64,13 +67,13 @@ describe('instantiate client', () => {
     });
 
     test('overriding with `undefined`', () => {
-      const client = new Jstz({ baseURL: 'http://localhost:5000/', defaultQuery: { hello: 'world' } });
+      const client = new Trilitech({ baseURL: 'http://localhost:5000/', defaultQuery: { hello: 'world' } });
       expect(client.buildURL('/foo', { hello: undefined })).toEqual('http://localhost:5000/foo');
     });
   });
 
   test('custom fetch', async () => {
-    const client = new Jstz({
+    const client = new Trilitech({
       baseURL: 'http://localhost:5000/',
       fetch: (url) => {
         return Promise.resolve(
@@ -86,7 +89,7 @@ describe('instantiate client', () => {
   });
 
   test('custom signal', async () => {
-    const client = new Jstz({
+    const client = new Trilitech({
       baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010',
       fetch: (...args) => {
         return new Promise((resolve, reject) =>
@@ -112,55 +115,55 @@ describe('instantiate client', () => {
 
   describe('baseUrl', () => {
     test('trailing slash', () => {
-      const client = new Jstz({ baseURL: 'http://localhost:5000/custom/path/' });
+      const client = new Trilitech({ baseURL: 'http://localhost:5000/custom/path/' });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
 
     test('no trailing slash', () => {
-      const client = new Jstz({ baseURL: 'http://localhost:5000/custom/path' });
+      const client = new Trilitech({ baseURL: 'http://localhost:5000/custom/path' });
       expect(client.buildURL('/foo', null)).toEqual('http://localhost:5000/custom/path/foo');
     });
 
     afterEach(() => {
-      process.env['JSTZ_BASE_URL'] = undefined;
+      process.env['TRILITECH_BASE_URL'] = undefined;
     });
 
     test('explicit option', () => {
-      const client = new Jstz({ baseURL: 'https://example.com' });
+      const client = new Trilitech({ baseURL: 'https://example.com' });
       expect(client.baseURL).toEqual('https://example.com');
     });
 
     test('env variable', () => {
-      process.env['JSTZ_BASE_URL'] = 'https://example.com/from_env';
-      const client = new Jstz({});
+      process.env['TRILITECH_BASE_URL'] = 'https://example.com/from_env';
+      const client = new Trilitech({});
       expect(client.baseURL).toEqual('https://example.com/from_env');
     });
 
     test('empty env variable', () => {
-      process.env['JSTZ_BASE_URL'] = ''; // empty
-      const client = new Jstz({});
+      process.env['TRILITECH_BASE_URL'] = ''; // empty
+      const client = new Trilitech({});
       expect(client.baseURL).toEqual('https://localhost:8933');
     });
 
     test('blank env variable', () => {
-      process.env['JSTZ_BASE_URL'] = '  '; // blank
-      const client = new Jstz({});
+      process.env['TRILITECH_BASE_URL'] = '  '; // blank
+      const client = new Trilitech({});
       expect(client.baseURL).toEqual('https://localhost:8933');
     });
   });
 
   test('maxRetries option is correctly set', () => {
-    const client = new Jstz({ maxRetries: 4 });
+    const client = new Trilitech({ maxRetries: 4 });
     expect(client.maxRetries).toEqual(4);
 
     // default
-    const client2 = new Jstz({});
+    const client2 = new Trilitech({});
     expect(client2.maxRetries).toEqual(2);
   });
 });
 
 describe('request building', () => {
-  const client = new Jstz({});
+  const client = new Trilitech({});
 
   describe('Content-Length', () => {
     test('handles multi-byte characters', () => {
@@ -202,7 +205,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Jstz({ timeout: 10, fetch: testFetch });
+    const client = new Trilitech({ timeout: 10, fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -232,7 +235,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Jstz({ fetch: testFetch, maxRetries: 4 });
+    const client = new Trilitech({ fetch: testFetch, maxRetries: 4 });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
 
@@ -256,7 +259,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Jstz({ fetch: testFetch, maxRetries: 4 });
+    const client = new Trilitech({ fetch: testFetch, maxRetries: 4 });
 
     expect(
       await client.request({
@@ -285,7 +288,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Jstz({
+    const client = new Trilitech({
       fetch: testFetch,
       maxRetries: 4,
       defaultHeaders: { 'X-Stainless-Retry-Count': null },
@@ -317,7 +320,7 @@ describe('retries', () => {
       capturedRequest = init;
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
-    const client = new Jstz({ fetch: testFetch, maxRetries: 4 });
+    const client = new Trilitech({ fetch: testFetch, maxRetries: 4 });
 
     expect(
       await client.request({
@@ -344,7 +347,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Jstz({ fetch: testFetch });
+    const client = new Trilitech({ fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
@@ -371,7 +374,7 @@ describe('retries', () => {
       return new Response(JSON.stringify({ a: 1 }), { headers: { 'Content-Type': 'application/json' } });
     };
 
-    const client = new Jstz({ fetch: testFetch });
+    const client = new Trilitech({ fetch: testFetch });
 
     expect(await client.request({ path: '/foo', method: 'get' })).toEqual({ a: 1 });
     expect(count).toEqual(2);
