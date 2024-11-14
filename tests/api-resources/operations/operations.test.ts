@@ -1,13 +1,13 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Trilitech from 'jstz-client';
+import JstzClient from '@jstz-dev/client';
 import { Response } from 'node-fetch';
 
-const client = new Trilitech({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
+const client = new JstzClient({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource operations', () => {
-  test('create: only required params', async () => {
-    const responsePromise = client.operations.create({
+  test('inject: only required params', async () => {
+    const responsePromise = client.operations.inject({
       inner: {
         content: {
           '#type': 'DeployFunction',
@@ -30,8 +30,8 @@ describe('resource operations', () => {
     expect(dataAndResponse.response).toBe(rawResponse);
   });
 
-  test('create: required and optional params', async () => {
-    const response = await client.operations.create({
+  test('inject: required and optional params', async () => {
+    const response = await client.operations.inject({
       inner: {
         content: {
           '#type': 'DeployFunction',

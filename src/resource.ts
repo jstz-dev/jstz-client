@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { Trilitech } from './index';
+import type { JstzClient } from './index';
 
 export class APIResource {
-  protected _client: Trilitech;
+  protected _client: JstzClient;
 
-  constructor(client: Trilitech) {
+  constructor(client: JstzClient) {
     this._client = client;
   }
 }
