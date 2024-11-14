@@ -55,12 +55,12 @@ $ cd jstz-client-node
 # With yarn
 $ yarn link
 $ cd ../my-package
-$ yarn link jstz-client
+$ yarn link jstz
 
 # With pnpm
 $ pnpm link --global
 $ cd ../my-package
-$ pnpm link -—global jstz-client
+$ pnpm link -—global jstz
 ```
 
 ## Running tests

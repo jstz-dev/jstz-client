@@ -2,9 +2,9 @@
 
 import { castToError, Headers } from './core';
 
-export class JstzClientError extends Error {}
+export class JstzError extends Error {}
 
-export class APIError extends JstzClientError {
+export class APIError extends JstzError {
   readonly status: number | undefined;
   readonly headers: Headers | undefined;
   readonly error: Object | undefined;

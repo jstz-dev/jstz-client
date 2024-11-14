@@ -52,11 +52,18 @@ Methods:
 
 # Logs
 
+Types:
+
+- <code><a href="./src/resources/logs/logs.ts">LogRecord</a></code>
+
+Methods:
+
+- <code title="get /logs/{address}/stream">client.logs.<a href="./src/resources/logs/logs.ts">stream</a>(address) -> void</code>
+
 ## PersistentRequests
 
 Types:
 
-- <code><a href="./src/resources/logs/persistent-requests.ts">LogRecord</a></code>
 - <code><a href="./src/resources/logs/persistent-requests.ts">PersistentRequestRetrieveResponse</a></code>
 - <code><a href="./src/resources/logs/persistent-requests.ts">PersistentRequestListResponse</a></code>
 
@@ -64,12 +71,6 @@ Methods:
 
 - <code title="get /logs/{address}/persistent/requests/{request_id}">client.logs.persistentRequests.<a href="./src/resources/logs/persistent-requests.ts">retrieve</a>(address, requestId) -> PersistentRequestRetrieveResponse</code>
 - <code title="get /logs/{address}/persistent/requests">client.logs.persistentRequests.<a href="./src/resources/logs/persistent-requests.ts">list</a>(address, { ...params }) -> PersistentRequestListResponse</code>
-
-## Stream
-
-Methods:
-
-- <code title="get /logs/{address}/stream">client.logs.stream.<a href="./src/resources/logs/stream.ts">list</a>(address) -> void</code>
 
 # Operations
 

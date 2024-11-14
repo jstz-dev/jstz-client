@@ -9,9 +9,9 @@
     "esModuleInterop": true,
     "baseUrl": "./",
     "paths": {
-      "jstz-client/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "jstz-client/*": ["src/*"],
-      "jstz-client": ["src/index.ts"]
+      "jstz/_shims/auto/*": ["src/_shims/auto/*-node"],
+      "jstz/*": ["src/*"],
+      "jstz": ["src/index.ts"]
     },
     "noEmit": true,
 

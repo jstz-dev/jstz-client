@@ -28,120 +28,63 @@ export interface OperationCreateParams {
   /**
    * Tezos public key
    */
-  public_key: OperationCreateParams.Ed25519 | OperationCreateParams.Secp256k1 | OperationCreateParams.P256;
+  public_key: string;
 
-  signature:
-    | OperationCreateParams.Ed25519Signature
-    | OperationCreateParams.Secp256k1Signature
-    | OperationCreateParams.P256Signature;
+  signature: string;
 }
 
 export namespace OperationCreateParams {
   export interface Inner {
-    content: Inner.DeployFunction | Inner.RunFunction;
+    content: Inner.UnionMember0 | Inner.UnionMember1;
 
     nonce: NonceAPI.Nonce;
 
     /**
      * Tezos Address
      */
-    source: Inner.Tz1 | Inner.Tz2 | Inner.Tz3;
+    source: string;
   }
 
   export namespace Inner {
-    export interface DeployFunction {
-      DeployFunction: DeployFunction.DeployFunction;
-    }
+    export interface UnionMember0 {
+      '#type': 'DeployFunction';
 
-    export namespace DeployFunction {
-      export interface DeployFunction {
-        /**
-         * Amount of tez to credit to the smart function account, debited from the sender
-         */
-        account_credit: number;
-
-        /**
-         * Smart function code
-         */
-        function_code: CodeAPI.ParsedCode;
-      }
-    }
-
-    export interface RunFunction {
       /**
-       * Request used to run a smart function. The target smart function is given by the
-       * host part of the uri. The rest of the attributes will be handled by the smart
-       * function itself.
+       * Amount of tez to credit to the smart function account, debited from the sender
        */
-      RunFunction: RunFunction.RunFunction;
-    }
+      account_credit: number;
 
-    export namespace RunFunction {
       /**
-       * Request used to run a smart function. The target smart function is given by the
-       * host part of the uri. The rest of the attributes will be handled by the smart
-       * function itself.
+       * Smart function code
        */
-      export interface RunFunction {
-        body: Array<number> | null;
-
-        /**
-         * Maximum amount of gas that is allowed for the execution of this operation
-         */
-        gas_limit: number;
-
-        /**
-         * Any valid HTTP headers
-         */
-        headers: unknown;
-
-        /**
-         * Any valid HTTP method
-         */
-        method: string;
-
-        /**
-         * Smart function URI in the form tezos://{smart_function_address}/rest/of/path
-         */
-        uri: string;
-      }
+      function_code: CodeAPI.ParsedCode;
     }
 
-    export interface Tz1 {
-      Tz1: string;
+    export interface UnionMember1 {
+      '#type': 'RunFunction';
+
+      body: Array<number> | null;
+
+      /**
+       * Maximum amount of gas that is allowed for the execution of this operation
+       */
+      gas_limit: number;
+
+      /**
+       * Any valid HTTP headers
+       */
+      headers: unknown;
+
+      /**
+       * Any valid HTTP method
+       */
+      method: string;
+
+      /**
+       * Smart function URI in the form tezos://{smart_function_address}/rest/of/path
+       */
+      uri: string;
     }
-
-    export interface Tz2 {
-      Tz2: string;
-    }
-
-    export interface Tz3 {
-      Tz3: string;
-    }
-  }
-
-  export interface Ed25519 {
-    Ed25519: string;
-  }
-
-  export interface Secp256k1 {
-    Secp256k1: string;
-  }
-
-  export interface P256 {
-    P256: string;
-  }
-
-  export interface Ed25519Signature {
-    Ed25519: string;
-  }
-
-  export interface Secp256k1Signature {
-    Secp256k1: string;
-  }
-
-  export interface P256Signature {
-    P256: string;
   }
 }
 

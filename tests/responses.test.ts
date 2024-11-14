@@ -1,5 +1,5 @@
-import { createResponseHeaders } from 'jstz-client/core';
-import { Headers } from 'jstz-client/_shims/index';
+import { createResponseHeaders } from 'jstz/core';
+import { Headers } from 'jstz/_shims/index';
 
 describe('response parsing', () => {
   // TODO: test unicode characters
