@@ -42,11 +42,13 @@ export let isFsReadStream: Shims['isFsReadStream'] | undefined = undefined;
 export function setShims(shims: Shims, options: { auto: boolean } = { auto: false }) {
   if (auto) {
     throw new Error(
-      `you must \`import 'jstz/shims/${shims.kind}'\` before importing anything else from jstz`,
+      `you must \`import 'jstz-client/shims/${shims.kind}'\` before importing anything else from jstz-client`,
     );
   }
   if (kind) {
-    throw new Error(`can't \`import 'jstz/shims/${shims.kind}'\` after \`import 'jstz/shims/${kind}'\``);
+    throw new Error(
+      `can't \`import 'jstz-client/shims/${shims.kind}'\` after \`import 'jstz-client/shims/${kind}'\``,
+    );
   }
   auto = options.auto;
   kind = shims.kind;

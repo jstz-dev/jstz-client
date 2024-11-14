@@ -4,8 +4,8 @@
 /**
  * Types will get added to this namespace when you import one of the following:
  *
- *   import 'jstz/shims/node'
- *   import 'jstz/shims/web'
+ *   import 'jstz-client/shims/node'
+ *   import 'jstz-client/shims/web'
  *
  * Importing more than one will cause type and runtime errors.
  */
