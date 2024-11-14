@@ -3,6 +3,7 @@
 import { APIResource } from '../../resource';
 import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
+import * as LogsAPI from './logs';
 
 export class PersistentRequests extends APIResource {
   /**
@@ -39,36 +40,9 @@ export class PersistentRequests extends APIResource {
   }
 }
 
-export interface LogRecord {
-  /**
-   * Tezos Address
-   */
-  address: LogRecord.Tz1 | LogRecord.Tz2 | LogRecord.Tz3;
+export type PersistentRequestRetrieveResponse = Array<LogsAPI.LogRecord>;
 
-  level: 'ERROR' | 'WARN' | 'INFO' | 'LOG';
-
-  request_id: string;
-
-  text: string;
-}
-
-export namespace LogRecord {
-  export interface Tz1 {
-    Tz1: string;
-  }
-
-  export interface Tz2 {
-    Tz2: string;
-  }
-
-  export interface Tz3 {
-    Tz3: string;
-  }
-}
-
-export type PersistentRequestRetrieveResponse = Array<LogRecord>;
-
-export type PersistentRequestListResponse = Array<LogRecord>;
+export type PersistentRequestListResponse = Array<LogsAPI.LogRecord>;
 
 export interface PersistentRequestListParams {
   limit?: number;
@@ -78,7 +52,6 @@ export interface PersistentRequestListParams {
 
 export declare namespace PersistentRequests {
   export {
-    type LogRecord as LogRecord,
     type PersistentRequestRetrieveResponse as PersistentRequestRetrieveResponse,
     type PersistentRequestListResponse as PersistentRequestListResponse,
     type PersistentRequestListParams as PersistentRequestListParams,

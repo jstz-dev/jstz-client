@@ -6,14 +6,14 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import { Accounts } from './resources/accounts/accounts';
-import { Logs } from './resources/logs/logs';
+import { LogRecord, Logs } from './resources/logs/logs';
 import { OperationCreateParams, Operations } from './resources/operations/operations';
 
 export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['JSTZ_CLIENT_BASE_URL'].
+   * Defaults to process.env['JSTZ_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -68,15 +68,15 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Jstz Client API.
+ * API Client for interfacing with the Jstz API.
  */
-export class JstzClient extends Core.APIClient {
+export class Jstz extends Core.APIClient {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Jstz Client API.
+   * API Client for interfacing with the Jstz API.
    *
-   * @param {string} [opts.baseURL=process.env['JSTZ_CLIENT_BASE_URL'] ?? https://localhost:8080/test-api] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['JSTZ_BASE_URL'] ?? https://localhost:8933] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -84,10 +84,10 @@ export class JstzClient extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('JSTZ_CLIENT_BASE_URL'), ...opts }: ClientOptions = {}) {
+  constructor({ baseURL = Core.readEnv('JSTZ_BASE_URL'), ...opts }: ClientOptions = {}) {
     const options: ClientOptions = {
       ...opts,
-      baseURL: baseURL || `https://localhost:8080/test-api`,
+      baseURL: baseURL || `https://localhost:8933`,
     };
 
     super({
@@ -116,10 +116,10 @@ export class JstzClient extends Core.APIClient {
     };
   }
 
-  static JstzClient = this;
+  static Jstz = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static JstzClientError = Errors.JstzClientError;
+  static JstzError = Errors.JstzError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -137,22 +137,22 @@ export class JstzClient extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-JstzClient.Accounts = Accounts;
-JstzClient.Logs = Logs;
-JstzClient.Operations = Operations;
-export declare namespace JstzClient {
+Jstz.Accounts = Accounts;
+Jstz.Logs = Logs;
+Jstz.Operations = Operations;
+export declare namespace Jstz {
   export type RequestOptions = Core.RequestOptions;
 
   export { Accounts as Accounts };
 
-  export { Logs as Logs };
+  export { Logs as Logs, type LogRecord as LogRecord };
 
   export { Operations as Operations, type OperationCreateParams as OperationCreateParams };
 }
 
-export { toFile, fileFromPath } from 'jstz-client/uploads';
+export { toFile, fileFromPath } from 'jstz/uploads';
 export {
-  JstzClientError,
+  JstzError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -165,6 +165,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from 'jstz-client/error';
+} from 'jstz/error';
 
-export default JstzClient;
+export default Jstz;
