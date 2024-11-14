@@ -1,8 +1,8 @@
 {
-  "name": "jstz-client",
+  "name": "@jstz-dev/client",
   "version": "0.0.1-alpha.0",
-  "description": "The official TypeScript library for the Trilitech API",
-  "author": "Trilitech <contact@trili.tech>",
+  "description": "The official TypeScript library for the Jstz Client API",
+  "author": "Jstz Client <contact@trili.tech>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
@@ -60,8 +60,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "jstz-client": ".",
-    "jstz-client/*": "./src/*"
+    "@jstz-dev/client": ".",
+    "@jstz-dev/client/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {

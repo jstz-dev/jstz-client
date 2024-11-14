@@ -2,6 +2,7 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
+import * as CryptoAPI from '../crypto';
 import * as CodeAPI from '../accounts/code';
 import * as NonceAPI from '../accounts/nonce';
 import * as ReceiptAPI from './receipt';
@@ -13,7 +14,7 @@ export class Operations extends APIResource {
   /**
    * Inject an operation into Jstz
    */
-  create(body: OperationCreateParams, options?: Core.RequestOptions): Core.APIPromise<void> {
+  inject(body: OperationInjectParams, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.post('/operations', {
       body,
       ...options,
@@ -22,31 +23,31 @@ export class Operations extends APIResource {
   }
 }
 
-export interface OperationCreateParams {
-  inner: OperationCreateParams.Inner;
+export interface OperationInjectParams {
+  inner: OperationInjectParams.Inner;
 
   /**
    * Tezos public key
    */
-  public_key: string;
+  public_key: CryptoAPI.PublicKey;
 
-  signature: string;
+  signature: CryptoAPI.Signature;
 }
 
-export namespace OperationCreateParams {
+export namespace OperationInjectParams {
   export interface Inner {
-    content: Inner.UnionMember0 | Inner.UnionMember1;
+    content: Inner.DeployFunction | Inner.RunFunction;
 
     nonce: NonceAPI.Nonce;
 
     /**
      * Tezos Address
      */
-    source: string;
+    source: CryptoAPI.PublicKeyHash;
   }
 
   export namespace Inner {
-    export interface UnionMember0 {
+    export interface DeployFunction {
       '#type': 'DeployFunction';
 
       /**
@@ -60,7 +61,7 @@ export namespace OperationCreateParams {
       function_code: CodeAPI.ParsedCode;
     }
 
-    export interface UnionMember1 {
+    export interface RunFunction {
       '#type': 'RunFunction';
 
       body: Array<number> | null;
@@ -70,10 +71,7 @@ export namespace OperationCreateParams {
        */
       gas_limit: number;
 
-      /**
-       * Any valid HTTP headers
-       */
-      headers: unknown;
+      headers: Record<string, unknown>;
 
       /**
        * Any valid HTTP method
@@ -91,7 +89,7 @@ export namespace OperationCreateParams {
 Operations.ReceiptResource = ReceiptResource;
 
 export declare namespace Operations {
-  export { type OperationCreateParams as OperationCreateParams };
+  export { type OperationInjectParams as OperationInjectParams };
 
   export { ReceiptResource as ReceiptResource, type Receipt as Receipt };
 }

@@ -5,15 +5,16 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
+import { Crypto, PublicKey, PublicKeyHash, Signature } from './resources/crypto';
 import { Accounts } from './resources/accounts/accounts';
 import { LogRecord, Logs } from './resources/logs/logs';
-import { OperationCreateParams, Operations } from './resources/operations/operations';
+import { OperationInjectParams, Operations } from './resources/operations/operations';
 
 export interface ClientOptions {
   /**
    * Override the default base URL for the API, e.g., "https://api.example.com/v2/"
    *
-   * Defaults to process.env['TRILITECH_BASE_URL'].
+   * Defaults to process.env['JSTZ_CLIENT_BASE_URL'].
    */
   baseURL?: string | null | undefined;
 
@@ -68,15 +69,15 @@ export interface ClientOptions {
 }
 
 /**
- * API Client for interfacing with the Trilitech API.
+ * API Client for interfacing with the Jstz Client API.
  */
-export class Trilitech extends Core.APIClient {
+export class JstzClient extends Core.APIClient {
   private _options: ClientOptions;
 
   /**
-   * API Client for interfacing with the Trilitech API.
+   * API Client for interfacing with the Jstz Client API.
    *
-   * @param {string} [opts.baseURL=process.env['TRILITECH_BASE_URL'] ?? https://localhost:8933] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['JSTZ_CLIENT_BASE_URL'] ?? https://localhost:8933] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -84,7 +85,7 @@ export class Trilitech extends Core.APIClient {
    * @param {Core.Headers} opts.defaultHeaders - Default headers to include with every request to the API.
    * @param {Core.DefaultQuery} opts.defaultQuery - Default query parameters to include with every request to the API.
    */
-  constructor({ baseURL = Core.readEnv('TRILITECH_BASE_URL'), ...opts }: ClientOptions = {}) {
+  constructor({ baseURL = Core.readEnv('JSTZ_CLIENT_BASE_URL'), ...opts }: ClientOptions = {}) {
     const options: ClientOptions = {
       ...opts,
       baseURL: baseURL || `https://localhost:8933`,
@@ -104,6 +105,7 @@ export class Trilitech extends Core.APIClient {
   accounts: API.Accounts = new API.Accounts(this);
   logs: API.Logs = new API.Logs(this);
   operations: API.Operations = new API.Operations(this);
+  crypto: API.Crypto = new API.Crypto(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -116,10 +118,10 @@ export class Trilitech extends Core.APIClient {
     };
   }
 
-  static Trilitech = this;
+  static JstzClient = this;
   static DEFAULT_TIMEOUT = 60000; // 1 minute
 
-  static TrilitechError = Errors.TrilitechError;
+  static JstzClientError = Errors.JstzClientError;
   static APIError = Errors.APIError;
   static APIConnectionError = Errors.APIConnectionError;
   static APIConnectionTimeoutError = Errors.APIConnectionTimeoutError;
@@ -137,22 +139,30 @@ export class Trilitech extends Core.APIClient {
   static fileFromPath = Uploads.fileFromPath;
 }
 
-Trilitech.Accounts = Accounts;
-Trilitech.Logs = Logs;
-Trilitech.Operations = Operations;
-export declare namespace Trilitech {
+JstzClient.Accounts = Accounts;
+JstzClient.Logs = Logs;
+JstzClient.Operations = Operations;
+JstzClient.Crypto = Crypto;
+export declare namespace JstzClient {
   export type RequestOptions = Core.RequestOptions;
 
   export { Accounts as Accounts };
 
   export { Logs as Logs, type LogRecord as LogRecord };
 
-  export { Operations as Operations, type OperationCreateParams as OperationCreateParams };
+  export { Operations as Operations, type OperationInjectParams as OperationInjectParams };
+
+  export {
+    Crypto as Crypto,
+    type PublicKey as PublicKey,
+    type PublicKeyHash as PublicKeyHash,
+    type Signature as Signature,
+  };
 }
 
-export { toFile, fileFromPath } from 'jstz-client/uploads';
+export { toFile, fileFromPath } from '@jstz-dev/client/uploads';
 export {
-  TrilitechError,
+  JstzClientError,
   APIError,
   APIConnectionError,
   APIConnectionTimeoutError,
@@ -165,6 +175,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from 'jstz-client/error';
+} from '@jstz-dev/client/error';
 
-export default Trilitech;
+export default JstzClient;

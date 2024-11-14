@@ -76,7 +76,7 @@ Methods:
 
 Methods:
 
-- <code title="post /operations">client.operations.<a href="./src/resources/operations/operations.ts">create</a>({ ...params }) -> void</code>
+- <code title="post /operations">client.operations.<a href="./src/resources/operations/operations.ts">inject</a>({ ...params }) -> void</code>
 
 ## Receipt
 
@@ -87,3 +87,11 @@ Types:
 Methods:
 
 - <code title="get /operations/{operation_hash}/receipt">client.operations.receipt.<a href="./src/resources/operations/receipt.ts">retrieve</a>(operationHash) -> Receipt</code>
+
+# Crypto
+
+Types:
+
+- <code><a href="./src/resources/crypto.ts">PublicKey</a></code>
+- <code><a href="./src/resources/crypto.ts">PublicKeyHash</a></code>
+- <code><a href="./src/resources/crypto.ts">Signature</a></code>

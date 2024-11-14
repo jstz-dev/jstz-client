@@ -1,12 +1,10 @@
-# Trilitech Node API Library
+# Jstz Client API Library
 
-[![NPM version](https://img.shields.io/npm/v/jstz-client.svg)](https://npmjs.org/package/jstz-client) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/jstz-client)
+[![NPM version](https://img.shields.io/npm/v/@jstz-dev/client.svg)](https://npmjs.org/package/@jstz-dev/client) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@jstz-dev/client)
 
-This library provides convenient access to the Trilitech REST API from server-side TypeScript or JavaScript.
+This library provides convenient access to the Jstz Client REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [docs.jstz.com](https://docs.jstz.com). The full API of this library can be found in [api.md](api.md).
-
-It is generated with [Stainless](https://www.stainlessapi.com/).
+The REST API documentation can be found on [jstz-dev.github.io](https://jstz-dev.github.io/jstz/). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
@@ -15,7 +13,7 @@ npm install git+ssh://git@github.com:stainless-sdks/jstz-client-node.git
 ```
 
 > [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install jstz-client`
+> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install @jstz-dev/client`
 
 ## Usage
 
@@ -23,9 +21,9 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Trilitech from 'jstz-client';
+import JstzClient from '@jstz-dev/client';
 
-const client = new Trilitech();
+const client = new JstzClient();
 
 async function main() {
   const parsedCode = await client.accounts.code.retrieve('REPLACE_ME');
@@ -40,9 +38,9 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Trilitech from 'jstz-client';
+import JstzClient from '@jstz-dev/client';
 
-const client = new Trilitech();
+const client = new JstzClient();
 
 async function main() {
   const parsedCode: string = await client.accounts.code.retrieve('REPLACE_ME');
@@ -63,7 +61,7 @@ a subclass of `APIError` will be thrown:
 ```ts
 async function main() {
   const parsedCode = await client.accounts.code.retrieve('REPLACE_ME').catch(async (err) => {
-    if (err instanceof Trilitech.APIError) {
+    if (err instanceof JstzClient.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
       console.log(err.headers); // {server: 'nginx', ...}
@@ -100,7 +98,7 @@ You can use the `maxRetries` option to configure or disable this:
 <!-- prettier-ignore -->
 ```js
 // Configure the default for all requests:
-const client = new Trilitech({
+const client = new JstzClient({
   maxRetries: 0, // default is 2
 });
 
@@ -117,7 +115,7 @@ Requests time out after 1 minute by default. You can configure this with a `time
 <!-- prettier-ignore -->
 ```ts
 // Configure the default for all requests:
-const client = new Trilitech({
+const client = new JstzClient({
   timeout: 20 * 1000, // 20 seconds (default is 1 minute)
 });
 
@@ -141,7 +139,7 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 
 <!-- prettier-ignore -->
 ```ts
-const client = new Trilitech();
+const client = new JstzClient();
 
 const response = await client.accounts.code.retrieve('REPLACE_ME').asResponse();
 console.log(response.headers.get('X-My-Header'));
@@ -202,16 +200,16 @@ By default, this library uses `node-fetch` in Node, and expects a global `fetch`
 
 If you would prefer to use a global, web-standards-compliant `fetch` function even in a Node environment,
 (for example, if you are running Node with `--experimental-fetch` or using NextJS which polyfills with `undici`),
-add the following import before your first import `from "Trilitech"`:
+add the following import before your first import `from "JstzClient"`:
 
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import 'jstz-client/shims/web';
-import Trilitech from 'jstz-client';
+import '@jstz-dev/client/shims/web';
+import JstzClient from '@jstz-dev/client';
 ```
 
-To do the inverse, add `import "jstz-client/shims/node"` (which does import polyfills).
+To do the inverse, add `import "@jstz-dev/client/shims/node"` (which does import polyfills).
 This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/jstz-client-node/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
@@ -221,9 +219,9 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Trilitech from 'jstz-client';
+import JstzClient from '@jstz-dev/client';
 
-const client = new Trilitech({
+const client = new JstzClient({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {
     console.log('About to make a request', url, init);
     const response = await fetch(url, init);
@@ -248,7 +246,7 @@ import http from 'http';
 import { HttpsProxyAgent } from 'https-proxy-agent';
 
 // Configure the default for all requests:
-const client = new Trilitech({
+const client = new JstzClient({
   httpAgent: new HttpsProxyAgent(process.env.PROXY_URL),
 });
 

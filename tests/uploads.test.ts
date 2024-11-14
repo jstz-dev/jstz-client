@@ -1,6 +1,6 @@
 import fs from 'fs';
-import { toFile, type ResponseLike } from 'jstz-client/uploads';
-import { File } from 'jstz-client/_shims/index';
+import { toFile, type ResponseLike } from '@jstz-dev/client/uploads';
+import { File } from '@jstz-dev/client/_shims/index';
 
 class MyClass {
   name: string = 'foo';

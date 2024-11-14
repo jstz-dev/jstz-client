@@ -2,9 +2,9 @@
 
 import { castToError, Headers } from './core';
 
-export class TrilitechError extends Error {}
+export class JstzClientError extends Error {}
 
-export class APIError extends TrilitechError {
+export class APIError extends JstzClientError {
   readonly status: number | undefined;
   readonly headers: Headers | undefined;
   readonly error: Object | undefined;
