@@ -22,7 +22,7 @@ export interface Receipt {
     | Receipt.Deposit
     | Receipt.FaDeposit
     | Receipt.FaWithdraw
-    | Receipt.ReceiptError;
+    | Receipt.Error;
 }
 
 export namespace Receipt {
@@ -102,7 +102,9 @@ export namespace Receipt {
     source: CryptoAPI.PublicKeyHash;
   }
 
-  export interface ReceiptError {
+  export interface Error {
+    _type: 'Error';
+
     source: string;
   }
 }
