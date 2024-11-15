@@ -16,22 +16,22 @@ export class ReceiptResource extends APIResource {
 export interface Receipt {
   hash: Array<number>;
 
-  inner: Receipt.UnionMember0 | Receipt.UnionMember1;
+  inner: Receipt.Success | Receipt.Failure;
 }
 
 export namespace Receipt {
-  export interface UnionMember0 {
+  export interface Success {
     _type: 'Success';
 
     inner:
-      | UnionMember0.DeployFunctionReceipt
-      | UnionMember0.RunFunctionReceipt
-      | UnionMember0.DepositReceipt
-      | UnionMember0.FaDepositReceipt
-      | UnionMember0.FaWithdrawReceipt;
+      | Success.DeployFunctionReceipt
+      | Success.RunFunctionReceipt
+      | Success.DepositReceipt
+      | Success.FaDepositReceipt
+      | Success.FaWithdrawReceipt;
   }
 
-  export namespace UnionMember0 {
+  export namespace Success {
     export interface DeployFunctionReceipt {
       /**
        * Tezos Address
@@ -99,7 +99,7 @@ export namespace Receipt {
     }
   }
 
-  export interface UnionMember1 {
+  export interface Failure {
     _type: 'Failed';
 
     inner: string;
