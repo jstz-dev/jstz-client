@@ -160,7 +160,7 @@ export declare namespace JstzClient {
   };
 }
 
-export { toFile, fileFromPath } from '@jstz-dev/client/uploads';
+export { toFile, fileFromPath } from './uploads';
 export {
   JstzClientError,
   APIError,
@@ -175,6 +175,6 @@ export {
   InternalServerError,
   PermissionDeniedError,
   UnprocessableEntityError,
-} from '@jstz-dev/client/error';
+} from './error';
 
 export default JstzClient;
