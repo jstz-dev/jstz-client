@@ -16,7 +16,7 @@ export class ReceiptResource extends APIResource {
 export interface Receipt {
   hash: Array<number>;
 
-  inner: Receipt.Success | Receipt.Failure;
+  result: Receipt.Success | Receipt.Failure;
 }
 
 export namespace Receipt {
@@ -24,22 +24,26 @@ export namespace Receipt {
     _type: 'Success';
 
     inner:
-      | Success.DeployFunctionReceipt
-      | Success.RunFunctionReceipt
-      | Success.DepositReceipt
-      | Success.FaDepositReceipt
-      | Success.FaWithdrawReceipt;
+      | Success.DeployFunction
+      | Success.RunFunction
+      | Success.Deposit
+      | Success.FaDeposit
+      | Success.FaWithdraw;
   }
 
   export namespace Success {
-    export interface DeployFunctionReceipt {
+    export interface DeployFunction {
+      _type: 'DeployFunction';
+
       /**
        * Tezos Address
        */
       address: CryptoAPI.PublicKeyHash;
     }
 
-    export interface RunFunctionReceipt {
+    export interface RunFunction {
+      _type: 'RunFunction';
+
       body: Array<number> | null;
 
       /**
@@ -53,7 +57,9 @@ export namespace Receipt {
       status_code: number;
     }
 
-    export interface DepositReceipt {
+    export interface Deposit {
+      _type: 'Deposit';
+
       /**
        * Tezos Address
        */
@@ -62,7 +68,9 @@ export namespace Receipt {
       updated_balance: number;
     }
 
-    export interface FaDepositReceipt {
+    export interface FaDeposit {
+      _type: 'FaDeposit';
+
       /**
        * Tezos Address
        */
@@ -70,10 +78,10 @@ export namespace Receipt {
 
       ticket_balance: number;
 
-      run_function?: FaDepositReceipt.RunFunction | null;
+      run_function?: FaDeposit.RunFunction | null;
     }
 
-    export namespace FaDepositReceipt {
+    export namespace FaDeposit {
       export interface RunFunction {
         body: Array<number> | null;
 
@@ -89,7 +97,9 @@ export namespace Receipt {
       }
     }
 
-    export interface FaWithdrawReceipt {
+    export interface FaWithdraw {
+      _type: 'FaWithdraw';
+
       outbox_message_id: string;
 
       /**

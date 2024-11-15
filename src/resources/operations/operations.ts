@@ -36,11 +36,6 @@ export interface OperationInjectParams {
 
 export namespace OperationInjectParams {
   export interface Inner {
-    /**
-     * Request used to run a smart function. The target smart function is given by the
-     * host part of the uri. The rest of the attributes will be handled by the smart
-     * function itself.
-     */
     content: Inner.DeployFunction | Inner.RunFunction;
 
     nonce: NonceAPI.Nonce;
@@ -53,6 +48,8 @@ export namespace OperationInjectParams {
 
   export namespace Inner {
     export interface DeployFunction {
+      _type: 'DeployFunction';
+
       /**
        * Amount of tez to credit to the smart function account, debited from the sender
        */
@@ -64,12 +61,9 @@ export namespace OperationInjectParams {
       function_code: CodeAPI.ParsedCode;
     }
 
-    /**
-     * Request used to run a smart function. The target smart function is given by the
-     * host part of the uri. The rest of the attributes will be handled by the smart
-     * function itself.
-     */
     export interface RunFunction {
+      _type: 'RunFunction';
+
       body: Array<number> | null;
 
       /**

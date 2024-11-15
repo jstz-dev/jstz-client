@@ -10,6 +10,7 @@ describe('resource operations', () => {
     const responsePromise = client.operations.inject({
       inner: {
         content: {
+          _type: 'DeployFunction',
           account_credit: 0,
           function_code: "export default (request) => new Response('Hello world!')",
         },
@@ -33,6 +34,7 @@ describe('resource operations', () => {
     const response = await client.operations.inject({
       inner: {
         content: {
+          _type: 'DeployFunction',
           account_credit: 0,
           function_code: "export default (request) => new Response('Hello world!')",
         },
