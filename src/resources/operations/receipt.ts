@@ -16,34 +16,67 @@ export class ReceiptResource extends APIResource {
 export interface Receipt {
   hash: Array<number>;
 
-  inner: Receipt.ReceiptContent | Receipt.Err;
+  inner:
+    | Receipt.DeployFunction
+    | Receipt.RunFunction
+    | Receipt.Deposit
+    | Receipt.FaDeposit
+    | Receipt.FaWithdraw
+    | Receipt.ReceiptError;
 }
 
 export namespace Receipt {
-  export interface ReceiptContent {
-    _type: 'Ok';
+  export interface DeployFunction {
+    _type: 'DeployFunction';
 
-    inner:
-      | ReceiptContent.DeployFunction
-      | ReceiptContent.RunFunction
-      | ReceiptContent.Deposit
-      | ReceiptContent.FaDeposit
-      | ReceiptContent.FaWithdraw;
+    /**
+     * Tezos Address
+     */
+    address: CryptoAPI.PublicKeyHash;
   }
 
-  export namespace ReceiptContent {
-    export interface DeployFunction {
-      _type: 'DeployFunction';
+  export interface RunFunction {
+    _type: 'RunFunction';
 
-      /**
-       * Tezos Address
-       */
-      address: CryptoAPI.PublicKeyHash;
-    }
+    body: Array<number> | null;
 
+    /**
+     * Any valid HTTP headers
+     */
+    headers: Record<string, unknown>;
+
+    /**
+     * Valid status code
+     */
+    status_code: number;
+  }
+
+  export interface Deposit {
+    _type: 'Deposit';
+
+    /**
+     * Tezos Address
+     */
+    account: CryptoAPI.PublicKeyHash;
+
+    updated_balance: number;
+  }
+
+  export interface FaDeposit {
+    _type: 'FaDeposit';
+
+    /**
+     * Tezos Address
+     */
+    receiver: CryptoAPI.PublicKeyHash;
+
+    ticket_balance: number;
+
+    run_function?: FaDeposit.RunFunction | null;
+  }
+
+  export namespace FaDeposit {
     export interface RunFunction {
-      _type: 'RunFunction';
-
       body: Array<number> | null;
 
       /**
@@ -56,63 +89,21 @@ export namespace Receipt {
        */
       status_code: number;
     }
-
-    export interface Deposit {
-      _type: 'Deposit';
-
-      /**
-       * Tezos Address
-       */
-      account: CryptoAPI.PublicKeyHash;
-
-      updated_balance: number;
-    }
-
-    export interface FaDeposit {
-      _type: 'FaDeposit';
-
-      /**
-       * Tezos Address
-       */
-      receiver: CryptoAPI.PublicKeyHash;
-
-      ticket_balance: number;
-
-      run_function?: FaDeposit.RunFunction | null;
-    }
-
-    export namespace FaDeposit {
-      export interface RunFunction {
-        body: Array<number> | null;
-
-        /**
-         * Any valid HTTP headers
-         */
-        headers: Record<string, unknown>;
-
-        /**
-         * Valid status code
-         */
-        status_code: number;
-      }
-    }
-
-    export interface FaWithdraw {
-      _type: 'FaWithdraw';
-
-      outbox_message_id: string;
-
-      /**
-       * Tezos Address
-       */
-      source: CryptoAPI.PublicKeyHash;
-    }
   }
 
-  export interface Err {
-    _type: 'Err';
+  export interface FaWithdraw {
+    _type: 'FaWithdraw';
 
-    inner: string;
+    outbox_message_id: string;
+
+    /**
+     * Tezos Address
+     */
+    source: CryptoAPI.PublicKeyHash;
+  }
+
+  export interface ReceiptError {
+    source: string;
   }
 }
 
