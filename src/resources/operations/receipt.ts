@@ -3,7 +3,7 @@
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as CryptoAPI from '../crypto';
-import { OperationInjectParams } from './operations';
+import { OperationInjectParams, Operations } from './operations';
 
 export class ReceiptResource extends APIResource {
   /**
@@ -170,17 +170,10 @@ export namespace Receipt {
   }
 }
 
-// Add this type helper to determine the return type based on operation type
-export type TypedReceipt<T> = T extends OperationInjectParams & { inner: { _type: 'DeployFunction' } }
+export type TypedReceipt<T> = T extends Operations.DeployFunctionOperation
   ? Receipt & { result: Receipt.Success & { inner: Receipt.Success.DeployFunction } }
-  : T extends OperationInjectParams & { inner: { _type: 'RunFunction' } }
+  : T extends Operations.RunFunctionOperation
   ? Receipt & { result: Receipt.Success & { inner: Receipt.Success.RunFunction } }
-  : T extends OperationInjectParams & { inner: { _type: 'Deposit' } }
-  ? Receipt & { result: Receipt.Success & { inner: Receipt.Success.Deposit } }
-  : T extends OperationInjectParams & { inner: { _type: 'FaDeposit' } }
-  ? Receipt & { result: Receipt.Success & { inner: Receipt.Success.FaDeposit } }
-  : T extends OperationInjectParams & { inner: { _type: 'FaWithdraw' } }
-  ? Receipt & { result: Receipt.Success & { inner: Receipt.Success.FaWithdraw } }
   : Receipt;
 
 export declare namespace ReceiptResource {

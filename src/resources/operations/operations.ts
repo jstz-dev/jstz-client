@@ -7,8 +7,8 @@ import * as CodeAPI from '../accounts/code';
 import * as NonceAPI from '../accounts/nonce';
 import * as ReceiptAPI from './receipt';
 import { Receipt, ReceiptResource, TypedReceipt } from './receipt';
-
-const blake2 = require("blake2");
+import { createHash } from 'node:crypto';
+import { Crypto } from '../crypto';
 
 export class Operations extends APIResource {
   receipt: ReceiptAPI.ReceiptResource = new ReceiptAPI.ReceiptResource(this._client);
@@ -27,24 +27,26 @@ export class Operations extends APIResource {
   /**
    * Inject an operation into Jstz and poll for a receipt
    */
-  async injectAndPoll<T extends OperationInjectParams>(body: T, options?: Core.RequestOptions): Promise<TypedReceipt<T>> {
+  async injectAndPoll<T extends OperationParam>(body: T, options?: Core.RequestOptions): Promise<TypedReceipt<T>> {
     await this.inject(body, options);
-    const operationHash = this.hash(body.inner);
+    const operationHash = Operations.hash_operation(body.inner);
     return this.receipt.pollReceipt(operationHash, options);
   }
 
   /**
    * Jstz specific operation hash
    */
-  hash(operation: OperationInjectParams.Inner): string {
+  static hash_operation =  (operation: OperationInjectParams.Inner): string => {
     const hash = JSON.stringify(operation);
     const buffer = Buffer.from(hash, "utf8");
-    let h = blake2.createHash('blake2b', { digestLength: 32});
-    h.update(buffer); //FIXME: Should be hex encoded
-    return h.digest('hex');
+    return Crypto.blake2b_hash(buffer);
   }
 
 }
+
+type DeployFunctionOperation = OperationInjectParams & { inner: { content: OperationInjectParams.Inner.DeployFunction } }
+type RunFunctionOperation = OperationInjectParams & { inner: { content: OperationInjectParams.Inner.RunFunction } }
+type OperationParam = DeployFunctionOperation | RunFunctionOperation
 
 export interface OperationInjectParams {
   inner: OperationInjectParams.Inner;
@@ -114,8 +116,11 @@ export namespace OperationInjectParams {
 
 Operations.ReceiptResource = ReceiptResource;
 
-export declare namespace Operations {
-  export { type OperationInjectParams as OperationInjectParams };
+ 
 
-  export { ReceiptResource as ReceiptResource, type Receipt as Receipt };
+export declare namespace Operations {
+  export { type OperationInjectParams as OperationInjectParams, type DeployFunctionOperation, type RunFunctionOperation, type OperationParam, type TypedReceipt as TypedReceipt };
+
+  export { ReceiptResource as ReceiptResource, type Receipt as Receipt  };
+    
 }
