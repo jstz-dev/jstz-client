@@ -768,7 +768,8 @@ export type RequestOptions<
   httpAgent?: Agent;
   signal?: AbortSignal | undefined | null;
   idempotencyKey?: string;
-
+  pollInterval?: number;
+  
   __binaryRequest?: boolean | undefined;
   __binaryResponse?: boolean | undefined;
 };
@@ -789,7 +790,8 @@ const requestOptionsKeys: KeysEnum<RequestOptions> = {
   httpAgent: true,
   signal: true,
   idempotencyKey: true,
-
+  pollInterval: true,
+  
   __binaryRequest: true,
   __binaryResponse: true,
 };
