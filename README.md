@@ -9,11 +9,8 @@ The REST API documentation can be found on [jstz-dev.github.io](https://jstz-dev
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:stainless-sdks/jstz-client-node.git
+npm install @jstz-dev/client
 ```
-
-> [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install @jstz-dev/client`
 
 ## Usage
 
@@ -210,7 +207,7 @@ import JstzClient from '@jstz-dev/client';
 ```
 
 To do the inverse, add `import "@jstz-dev/client/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/stainless-sdks/jstz-client-node/tree/main/src/_shims#readme)).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/jstz-dev/jstz-client/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -266,13 +263,22 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/stainless-sdks/jstz-client-node/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/jstz-dev/jstz-client/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
 TypeScript >= 4.5 is supported.
 
 The following runtimes are supported:
+
+- Web browsers (Up-to-date Chrome, Firefox, Safari, Edge, and more)
+- Node.js 18 LTS or later ([non-EOL](https://endoflife.date/nodejs)) versions.
+- Deno v1.28.0 or higher, using `import JstzClient from "npm:@jstz-dev/client"`.
+- Bun 1.0 or later.
+- Cloudflare Workers.
+- Vercel Edge Runtime.
+- Jest 28 or greater with the `"node"` environment (`"jsdom"` is not supported at this time).
+- Nitro v2.6 or greater.
 
 Note that React Native is not supported at this time.
 
