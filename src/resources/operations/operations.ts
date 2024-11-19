@@ -6,7 +6,9 @@ import * as CryptoAPI from '../crypto';
 import * as CodeAPI from '../accounts/code';
 import * as NonceAPI from '../accounts/nonce';
 import * as ReceiptAPI from './receipt';
-import { Receipt, ReceiptResource } from './receipt';
+import { Receipt, ReceiptResource, TypedReceipt } from './receipt';
+
+const blake2 = require("blake2");
 
 export class Operations extends APIResource {
   receipt: ReceiptAPI.ReceiptResource = new ReceiptAPI.ReceiptResource(this._client);
@@ -21,6 +23,27 @@ export class Operations extends APIResource {
       headers: { Accept: '*/*', ...options?.headers },
     });
   }
+
+  /**
+   * Inject an operation into Jstz and poll for a receipt
+   */
+  async injectAndPoll<T extends OperationInjectParams>(body: T, options?: Core.RequestOptions): Promise<TypedReceipt<T>> {
+    await this.inject(body, options);
+    const operationHash = this.hash(body.inner);
+    return this.receipt.pollReceipt(operationHash, options);
+  }
+
+  /**
+   * Jstz specific operation hash
+   */
+  hash(operation: OperationInjectParams.Inner): string {
+    const hash = JSON.stringify(operation);
+    const buffer = Buffer.from(hash, "utf8");
+    let h = blake2.createHash('blake2b', { digestLength: 32});
+    h.update(buffer); //FIXME: Should be hex encoded
+    return h.digest('hex');
+  }
+
 }
 
 export interface OperationInjectParams {
