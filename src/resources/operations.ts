@@ -30,6 +30,47 @@ export class Operations extends APIResource {
       headers: { Accept: '*/*', ...options?.headers },
     });
   }
+
+  /**
+   * Inject an operation into Jstz and poll for a receipt
+   */
+  async injectAndPoll<T extends OperationInjectParams>(
+    body: T,
+    options?: Core.RequestOptions,
+  ): Promise<InjectedOperationReceipt<T>> {
+    await this.inject(body, options);
+    const operationHash = await this.hash(body.inner);
+    return this.pollReceipt(operationHash, options);
+  }
+
+  async pollReceipt<T extends OperationInjectParams>(
+    operationHash: string,
+    options?: Core.RequestOptions,
+  ): Promise<InjectedOperationReceipt<T>> {
+    const intervalRate = options?.pollInterval ?? 3000;
+    const startTime = Date.now();
+    return new Promise((resolve, reject) => {
+      const interval = setInterval(async () => {
+        try {
+          const call = this.getReceipt(operationHash, options);
+          const response = await call.asResponse();
+          if (response.status === 200) {
+            const receipt = parseInjectedOperationReceipt<T>(await call);
+            clearInterval(interval);
+            resolve(receipt);
+          }
+          const now = Date.now();
+          const elapsedTime = now - startTime;
+          if (elapsedTime > (options?.timeout ?? 30000)) {
+            throw new Error('Poll timeout');
+          }
+        } catch (err) {
+          clearInterval(interval);
+          reject(err);
+        }
+      }, intervalRate);
+    });
+  }
 }
 
 export interface Operation {
@@ -185,6 +226,32 @@ export namespace Receipt {
     _type: 'Failed';
 
     inner: string;
+  }
+}
+
+// Helper to determine the return type based on operation type
+export type InjectedOperationReceipt<T> =
+  T extends OperationInjectParams & { inner: { content: Operation.DeployFunction } } ?
+    Receipt & { result: Receipt.Success } & { result: { inner: Receipt.Success.DeployFunction } }
+  : T extends OperationInjectParams & { inner: { content: Operation.RunFunction } } ?
+    Receipt & { result: Receipt.Success } & { result: { inner: Receipt.Success.RunFunction } }
+  : Receipt;
+
+export function parseInjectedOperationReceipt<T extends OperationInjectParams>(
+  receipt: Receipt,
+): InjectedOperationReceipt<T> {
+  switch (receipt.result._type) {
+    case 'Success':
+      switch (receipt.result.inner._type) {
+        case 'DeployFunction':
+          return receipt as InjectedOperationReceipt<T>;
+        case 'RunFunction':
+          return receipt as InjectedOperationReceipt<T>;
+        default:
+          throw new Error('Not an injected operation receipt');
+      }
+    case 'Failed':
+      throw new Error(receipt.result.inner);
   }
 }
 
