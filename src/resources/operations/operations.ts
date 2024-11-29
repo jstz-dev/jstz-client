@@ -12,6 +12,13 @@ export class Operations extends APIResource {
   receipt: ReceiptAPI.ReceiptResource = new ReceiptAPI.ReceiptResource(this._client);
 
   /**
+   * Returns the hash of an Operation
+   */
+  hash(body: OperationHashParams, options?: Core.RequestOptions): Core.APIPromise<OperationHashResponse> {
+    return this._client.post('/operations/hash', { body, ...options });
+  }
+
+  /**
    * Inject an operation into Jstz
    */
   inject(body: OperationInjectParams, options?: Core.RequestOptions): Core.APIPromise<void> {
@@ -20,6 +27,61 @@ export class Operations extends APIResource {
       ...options,
       headers: { Accept: '*/*', ...options?.headers },
     });
+  }
+}
+
+export type OperationHashResponse = Array<number>;
+
+export interface OperationHashParams {
+  content: OperationHashParams.DeployFunction | OperationHashParams.RunFunction;
+
+  nonce: NonceAPI.Nonce;
+
+  /**
+   * Tezos Address
+   */
+  source: CryptoAPI.PublicKeyHash;
+}
+
+export namespace OperationHashParams {
+  export interface DeployFunction {
+    _type: 'DeployFunction';
+
+    /**
+     * Amount of tez to credit to the smart function account, debited from the sender
+     */
+    account_credit: number;
+
+    /**
+     * Smart function code
+     */
+    function_code: CodeAPI.ParsedCode;
+  }
+
+  export interface RunFunction {
+    _type: 'RunFunction';
+
+    body: Array<number> | null;
+
+    /**
+     * Maximum amount of gas that is allowed for the execution of this operation
+     */
+    gas_limit: number;
+
+    /**
+     * Any valid HTTP headers
+     */
+    headers: Record<string, unknown>;
+
+    /**
+     * Any valid HTTP method
+     */
+    method: string;
+
+    /**
+     * Smart function URI in the form tezos://{smart_function_address}/rest/of/path
+     */
+    uri: string;
   }
 }
 
@@ -92,7 +154,11 @@ export namespace OperationInjectParams {
 Operations.ReceiptResource = ReceiptResource;
 
 export declare namespace Operations {
-  export { type OperationInjectParams as OperationInjectParams };
+  export {
+    type OperationHashResponse as OperationHashResponse,
+    type OperationHashParams as OperationHashParams,
+    type OperationInjectParams as OperationInjectParams,
+  };
 
   export { ReceiptResource as ReceiptResource, type Receipt as Receipt };
 }

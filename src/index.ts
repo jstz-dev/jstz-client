@@ -8,7 +8,12 @@ import * as API from './resources/index';
 import { Crypto, PublicKey, PublicKeyHash, Signature } from './resources/crypto';
 import { Accounts } from './resources/accounts/accounts';
 import { LogRecord, Logs } from './resources/logs/logs';
-import { OperationInjectParams, Operations } from './resources/operations/operations';
+import {
+  OperationHashParams,
+  OperationHashResponse,
+  OperationInjectParams,
+  Operations,
+} from './resources/operations/operations';
 
 export interface ClientOptions {
   /**
@@ -150,7 +155,12 @@ export declare namespace JstzClient {
 
   export { Logs as Logs, type LogRecord as LogRecord };
 
-  export { Operations as Operations, type OperationInjectParams as OperationInjectParams };
+  export {
+    Operations as Operations,
+    type OperationHashResponse as OperationHashResponse,
+    type OperationHashParams as OperationHashParams,
+    type OperationInjectParams as OperationInjectParams,
+  };
 
   export {
     Crypto as Crypto,
