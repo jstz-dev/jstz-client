@@ -6,6 +6,37 @@ import { Response } from 'node-fetch';
 const client = new JstzClient({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource operations', () => {
+  test('hash: only required params', async () => {
+    const responsePromise = client.operations.hash({
+      content: {
+        _type: 'DeployFunction',
+        account_credit: 0,
+        function_code: "export default (request) => new Response('Hello world!')",
+      },
+      nonce: 0,
+      source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
+    });
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('hash: required and optional params', async () => {
+    const response = await client.operations.hash({
+      content: {
+        _type: 'DeployFunction',
+        account_credit: 0,
+        function_code: "export default (request) => new Response('Hello world!')",
+      },
+      nonce: 0,
+      source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
+    });
+  });
+
   test('inject: only required params', async () => {
     const responsePromise = client.operations.inject({
       inner: {

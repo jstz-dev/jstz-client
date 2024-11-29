@@ -3,4 +3,9 @@
 export { Accounts } from './accounts/accounts';
 export { Crypto, type PublicKey, type PublicKeyHash, type Signature } from './crypto';
 export { Logs, type LogRecord } from './logs/logs';
-export { Operations, type OperationInjectParams } from './operations/operations';
+export {
+  Operations,
+  type OperationHashResponse,
+  type OperationHashParams,
+  type OperationInjectParams,
+} from './operations/operations';

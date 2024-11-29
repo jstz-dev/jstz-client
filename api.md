@@ -74,8 +74,13 @@ Methods:
 
 # Operations
 
+Types:
+
+- <code><a href="./src/resources/operations/operations.ts">OperationHashResponse</a></code>
+
 Methods:
 
+- <code title="post /operations/hash">client.operations.<a href="./src/resources/operations/operations.ts">hash</a>({ ...params }) -> OperationHashResponse</code>
 - <code title="post /operations">client.operations.<a href="./src/resources/operations/operations.ts">inject</a>({ ...params }) -> void</code>
 
 ## Receipt
