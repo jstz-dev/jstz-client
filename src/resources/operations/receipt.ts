@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as CryptoAPI from '../crypto';
 
 export class ReceiptResource extends APIResource {
   /**
@@ -38,7 +37,13 @@ export namespace Receipt {
       /**
        * Tezos Address
        */
-      address: CryptoAPI.PublicKeyHash;
+      address: string | DeployFunction.Kt1;
+    }
+
+    export namespace DeployFunction {
+      export interface Kt1 {
+        Kt1: string;
+      }
     }
 
     export interface RunFunction {
@@ -63,9 +68,15 @@ export namespace Receipt {
       /**
        * Tezos Address
        */
-      account: CryptoAPI.PublicKeyHash;
+      account: string | Deposit.Kt1;
 
       updated_balance: number;
+    }
+
+    export namespace Deposit {
+      export interface Kt1 {
+        Kt1: string;
+      }
     }
 
     export interface FaDeposit {
@@ -74,7 +85,7 @@ export namespace Receipt {
       /**
        * Tezos Address
        */
-      receiver: CryptoAPI.PublicKeyHash;
+      receiver: string | FaDeposit.Kt1;
 
       ticket_balance: number;
 
@@ -82,6 +93,10 @@ export namespace Receipt {
     }
 
     export namespace FaDeposit {
+      export interface Kt1 {
+        Kt1: string;
+      }
+
       export interface RunFunction {
         body: Array<number> | null;
 
@@ -105,7 +120,13 @@ export namespace Receipt {
       /**
        * Tezos Address
        */
-      source: CryptoAPI.PublicKeyHash;
+      source: string | FaWithdraw.Kt1;
+    }
+
+    export namespace FaWithdraw {
+      export interface Kt1 {
+        Kt1: string;
+      }
     }
   }
 
