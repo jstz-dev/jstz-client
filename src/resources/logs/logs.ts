@@ -2,7 +2,6 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as CryptoAPI from '../crypto';
 import * as PersistentRequestsAPI from './persistent-requests';
 import {
   PersistentRequestListParams,
@@ -32,13 +31,19 @@ export interface LogRecord {
   /**
    * Tezos Address
    */
-  address: CryptoAPI.PublicKeyHash;
+  address: string | LogRecord.Kt1;
 
   level: 'ERROR' | 'WARN' | 'INFO' | 'LOG';
 
   request_id: string;
 
   text: string;
+}
+
+export namespace LogRecord {
+  export interface Kt1 {
+    Kt1: string;
+  }
 }
 
 Logs.PersistentRequests = PersistentRequests;
