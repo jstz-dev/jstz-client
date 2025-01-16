@@ -114,7 +114,13 @@ export namespace Receipt {
       /**
        * Tezos Address
        */
-      address: string;
+      address: string | DeployFunction.Kt1;
+    }
+
+    export namespace DeployFunction {
+      export interface Kt1 {
+        Kt1: string;
+      }
     }
 
     export interface RunFunction {
@@ -139,9 +145,15 @@ export namespace Receipt {
       /**
        * Tezos Address
        */
-      account: string;
+      account: string | Deposit.Kt1;
 
       updated_balance: number;
+    }
+
+    export namespace Deposit {
+      export interface Kt1 {
+        Kt1: string;
+      }
     }
 
     export interface FaDeposit {
@@ -150,7 +162,7 @@ export namespace Receipt {
       /**
        * Tezos Address
        */
-      receiver: string;
+      receiver: string | FaDeposit.Kt1;
 
       ticket_balance: number;
 
@@ -158,6 +170,10 @@ export namespace Receipt {
     }
 
     export namespace FaDeposit {
+      export interface Kt1 {
+        Kt1: string;
+      }
+
       export interface RunFunction {
         body: Array<number> | null;
 
@@ -181,7 +197,13 @@ export namespace Receipt {
       /**
        * Tezos Address
        */
-      source: string;
+      source: string | FaWithdraw.Kt1;
+    }
+
+    export namespace FaWithdraw {
+      export interface Kt1 {
+        Kt1: string;
+      }
     }
   }
 

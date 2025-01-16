@@ -1,9 +1,9 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import JstzClient from '@jstz-dev/client';
+import Jstz from '@jstz-dev/client';
 import { Response } from 'node-fetch';
 
-const client = new JstzClient({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
+const client = new Jstz({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource accounts', () => {
   test('get', async () => {
@@ -20,7 +20,7 @@ describe('resource accounts', () => {
   test('get: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.accounts.get('address', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      JstzClient.NotFoundError,
+      Jstz.NotFoundError,
     );
   });
 
@@ -38,7 +38,7 @@ describe('resource accounts', () => {
   test('getBalance: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.accounts.getBalance('address', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      JstzClient.NotFoundError,
+      Jstz.NotFoundError,
     );
   });
 
@@ -56,7 +56,7 @@ describe('resource accounts', () => {
   test('getCode: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.accounts.getCode('address', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      JstzClient.NotFoundError,
+      Jstz.NotFoundError,
     );
   });
 
@@ -74,7 +74,7 @@ describe('resource accounts', () => {
   test('getKv: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.accounts.getKv('address', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      JstzClient.NotFoundError,
+      Jstz.NotFoundError,
     );
   });
 
@@ -92,7 +92,7 @@ describe('resource accounts', () => {
   test('getNonce: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.accounts.getNonce('address', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      JstzClient.NotFoundError,
+      Jstz.NotFoundError,
     );
   });
 
@@ -110,7 +110,7 @@ describe('resource accounts', () => {
   test('getSubkeys: request options instead of params are passed correctly', async () => {
     // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
     await expect(client.accounts.getSubkeys('address', { path: '/_stainless_unknown_path' })).rejects.toThrow(
-      JstzClient.NotFoundError,
+      Jstz.NotFoundError,
     );
   });
 });
