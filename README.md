@@ -26,7 +26,7 @@ import JstzClient from '@jstz-dev/client';
 const client = new JstzClient();
 
 async function main() {
-  const parsedCode = await client.accounts.code.retrieve('REPLACE_ME');
+  const code = await client.accounts.getCode('REPLACE_ME');
 }
 
 main();
@@ -43,7 +43,7 @@ import JstzClient from '@jstz-dev/client';
 const client = new JstzClient();
 
 async function main() {
-  const parsedCode: string = await client.accounts.code.retrieve('REPLACE_ME');
+  const code: string = await client.accounts.getCode('REPLACE_ME');
 }
 
 main();
@@ -60,7 +60,7 @@ a subclass of `APIError` will be thrown:
 <!-- prettier-ignore -->
 ```ts
 async function main() {
-  const parsedCode = await client.accounts.code.retrieve('REPLACE_ME').catch(async (err) => {
+  const code = await client.accounts.getCode('REPLACE_ME').catch(async (err) => {
     if (err instanceof JstzClient.APIError) {
       console.log(err.status); // 400
       console.log(err.name); // BadRequestError
@@ -103,7 +103,7 @@ const client = new JstzClient({
 });
 
 // Or, configure per-request:
-await client.accounts.code.retrieve('REPLACE_ME', {
+await client.accounts.getCode('REPLACE_ME', {
   maxRetries: 5,
 });
 ```
@@ -120,7 +120,7 @@ const client = new JstzClient({
 });
 
 // Override per-request:
-await client.accounts.code.retrieve('REPLACE_ME', {
+await client.accounts.getCode('REPLACE_ME', {
   timeout: 5 * 1000,
 });
 ```
@@ -141,13 +141,13 @@ You can also use the `.withResponse()` method to get the raw `Response` along wi
 ```ts
 const client = new JstzClient();
 
-const response = await client.accounts.code.retrieve('REPLACE_ME').asResponse();
+const response = await client.accounts.getCode('REPLACE_ME').asResponse();
 console.log(response.headers.get('X-My-Header'));
 console.log(response.statusText); // access the underlying Response object
 
-const { data: parsedCode, response: raw } = await client.accounts.code.retrieve('REPLACE_ME').withResponse();
+const { data: code, response: raw } = await client.accounts.getCode('REPLACE_ME').withResponse();
 console.log(raw.headers.get('X-My-Header'));
-console.log(parsedCode);
+console.log(code);
 ```
 
 ### Making custom/undocumented requests
@@ -251,7 +251,7 @@ const client = new JstzClient({
 });
 
 // Override per-request:
-await client.accounts.code.retrieve('REPLACE_ME', {
+await client.accounts.getCode('REPLACE_ME', {
   httpAgent: new http.Agent({ keepAlive: false }),
 });
 ```

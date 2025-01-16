@@ -6,12 +6,30 @@ import { Response } from 'node-fetch';
 const client = new JstzClient({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
 
 describe('resource operations', () => {
+  test('getReceipt', async () => {
+    const responsePromise = client.operations.getReceipt('operation_hash');
+    const rawResponse = await responsePromise.asResponse();
+    expect(rawResponse).toBeInstanceOf(Response);
+    const response = await responsePromise;
+    expect(response).not.toBeInstanceOf(Response);
+    const dataAndResponse = await responsePromise.withResponse();
+    expect(dataAndResponse.data).toBe(response);
+    expect(dataAndResponse.response).toBe(rawResponse);
+  });
+
+  test('getReceipt: request options instead of params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.operations.getReceipt('operation_hash', { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(JstzClient.NotFoundError);
+  });
+
   test('hash: only required params', async () => {
     const responsePromise = client.operations.hash({
       content: {
-        _type: 'DeployFunction',
         account_credit: 0,
         function_code: "export default (request) => new Response('Hello world!')",
+        _type: 'DeployFunction',
       },
       nonce: 0,
       source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
@@ -28,9 +46,9 @@ describe('resource operations', () => {
   test('hash: required and optional params', async () => {
     const response = await client.operations.hash({
       content: {
-        _type: 'DeployFunction',
         account_credit: 0,
         function_code: "export default (request) => new Response('Hello world!')",
+        _type: 'DeployFunction',
       },
       nonce: 0,
       source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
@@ -41,9 +59,9 @@ describe('resource operations', () => {
     const responsePromise = client.operations.inject({
       inner: {
         content: {
-          _type: 'DeployFunction',
           account_credit: 0,
           function_code: "export default (request) => new Response('Hello world!')",
+          _type: 'DeployFunction',
         },
         nonce: 0,
         source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
@@ -65,9 +83,9 @@ describe('resource operations', () => {
     const response = await client.operations.inject({
       inner: {
         content: {
-          _type: 'DeployFunction',
           account_credit: 0,
           function_code: "export default (request) => new Response('Hello world!')",
+          _type: 'DeployFunction',
         },
         nonce: 0,
         source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',

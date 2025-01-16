@@ -5,14 +5,23 @@ import * as Core from './core';
 import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
-import { Crypto, PublicKey, PublicKeyHash, Signature } from './resources/crypto';
-import { Accounts } from './resources/accounts/accounts';
-import { LogRecord, Logs } from './resources/logs/logs';
 import {
+  Account,
+  AccountGetBalanceResponse,
+  AccountGetSubkeysResponse,
+  Accounts,
+  Code,
+  KvValue,
+  Nonce,
+} from './resources/accounts/accounts';
+import {
+  Operation,
   OperationHashParams,
   OperationHashResponse,
   OperationInjectParams,
   Operations,
+  Receipt,
+  SignedOperation,
 } from './resources/operations/operations';
 
 export interface ClientOptions {
@@ -108,9 +117,7 @@ export class JstzClient extends Core.APIClient {
   }
 
   accounts: API.Accounts = new API.Accounts(this);
-  logs: API.Logs = new API.Logs(this);
   operations: API.Operations = new API.Operations(this);
-  crypto: API.Crypto = new API.Crypto(this);
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
@@ -145,29 +152,33 @@ export class JstzClient extends Core.APIClient {
 }
 
 JstzClient.Accounts = Accounts;
-JstzClient.Logs = Logs;
 JstzClient.Operations = Operations;
-JstzClient.Crypto = Crypto;
 export declare namespace JstzClient {
   export type RequestOptions = Core.RequestOptions;
 
-  export { Accounts as Accounts };
-
-  export { Logs as Logs, type LogRecord as LogRecord };
+  export {
+    Accounts as Accounts,
+    type Account as Account,
+    type Code as Code,
+    type KvValue as KvValue,
+    type Nonce as Nonce,
+    type AccountGetBalanceResponse as AccountGetBalanceResponse,
+    type AccountGetSubkeysResponse as AccountGetSubkeysResponse,
+  };
 
   export {
     Operations as Operations,
+    type Operation as Operation,
+    type Receipt as Receipt,
+    type SignedOperation as SignedOperation,
     type OperationHashResponse as OperationHashResponse,
     type OperationHashParams as OperationHashParams,
     type OperationInjectParams as OperationInjectParams,
   };
 
-  export {
-    Crypto as Crypto,
-    type PublicKey as PublicKey,
-    type PublicKeyHash as PublicKeyHash,
-    type Signature as Signature,
-  };
+  export type PublicKey = API.PublicKey;
+  export type PublicKeyHash = API.PublicKeyHash;
+  export type Signature = API.Signature;
 }
 
 export { toFile, fileFromPath } from './uploads';
