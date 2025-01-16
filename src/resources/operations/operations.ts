@@ -2,14 +2,24 @@
 
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
-import * as CryptoAPI from '../crypto';
-import * as CodeAPI from '../accounts/code';
-import * as NonceAPI from '../accounts/nonce';
-import * as ReceiptAPI from './receipt';
-import { Receipt, ReceiptResource } from './receipt';
+import * as Shared from '../shared';
+import * as AccountsAPI from '../accounts/accounts';
+import * as ContentAPI from './content';
+import {
+  Content,
+  DeployFunction as ContentAPIDeployFunction,
+  RunFunction as ContentAPIRunFunction,
+} from './content';
 
 export class Operations extends APIResource {
-  receipt: ReceiptAPI.ReceiptResource = new ReceiptAPI.ReceiptResource(this._client);
+  content: ContentAPI.Content = new ContentAPI.Content(this._client);
+
+  /**
+   * Get the receipt of an operation
+   */
+  getReceipt(operationHash: string, options?: Core.RequestOptions): Core.APIPromise<Receipt> {
+    return this._client.get(`/operations/${operationHash}/receipt`, options);
+  }
 
   /**
    * Returns the hash of an Operation
@@ -30,97 +40,69 @@ export class Operations extends APIResource {
   }
 }
 
-export type OperationHashResponse = Array<number>;
+export interface Operation {
+  /**
+   * Request used to run a smart function. The target smart function is given by the
+   * host part of the uri. The rest of the attributes will be handled by the smart
+   * function itself.
+   */
+  content: Operation.DeployFunction | Operation.RunFunction;
 
-export interface OperationHashParams {
-  content: OperationHashParams.DeployFunction | OperationHashParams.RunFunction;
-
-  nonce: NonceAPI.Nonce;
+  nonce: AccountsAPI.Nonce;
 
   /**
    * Tezos Address
    */
-  source: CryptoAPI.PublicKeyHash;
+  source: Shared.PublicKeyHash;
 }
 
-export namespace OperationHashParams {
-  export interface DeployFunction {
+export namespace Operation {
+  export interface DeployFunction extends ContentAPI.DeployFunction {
     _type: 'DeployFunction';
-
-    /**
-     * Amount of tez to credit to the smart function account, debited from the sender
-     */
-    account_credit: number;
-
-    /**
-     * Smart function code
-     */
-    function_code: CodeAPI.ParsedCode;
   }
-
-  export interface RunFunction {
-    _type: 'RunFunction';
-
-    body: Array<number> | null;
-
-    /**
-     * Maximum amount of gas that is allowed for the execution of this operation
-     */
-    gas_limit: number;
-
-    /**
-     * Any valid HTTP headers
-     */
-    headers: Record<string, unknown>;
-
-    /**
-     * Any valid HTTP method
-     */
-    method: string;
-
-    /**
-     * Smart function URI in the form tezos://{smart_function_address}/rest/of/path
-     */
-    uri: string;
-  }
-}
-
-export interface OperationInjectParams {
-  inner: OperationInjectParams.Inner;
 
   /**
-   * Tezos public key
+   * Request used to run a smart function. The target smart function is given by the
+   * host part of the uri. The rest of the attributes will be handled by the smart
+   * function itself.
    */
-  public_key: CryptoAPI.PublicKey;
-
-  signature: CryptoAPI.Signature;
+  export interface RunFunction extends ContentAPI.RunFunction {
+    _type: 'RunFunction';
+  }
 }
 
-export namespace OperationInjectParams {
-  export interface Inner {
-    content: Inner.DeployFunction | Inner.RunFunction;
+export interface Receipt {
+  hash: Array<number>;
 
-    nonce: NonceAPI.Nonce;
+  result: Receipt.Success | Receipt.Failure;
+}
 
-    /**
-     * Tezos Address
-     */
-    source: CryptoAPI.PublicKeyHash;
+export namespace Receipt {
+  export interface Success {
+    _type: 'Success';
+
+    inner:
+      | Success.DeployFunction
+      | Success.RunFunction
+      | Success.Deposit
+      | Success.FaDeposit
+      | Success.FaWithdraw;
   }
 
-  export namespace Inner {
+  export namespace Success {
     export interface DeployFunction {
       _type: 'DeployFunction';
 
       /**
-       * Amount of tez to credit to the smart function account, debited from the sender
+       * Tezos Address
        */
-      account_credit: number;
+      address: string | DeployFunction.Kt1;
+    }
 
-      /**
-       * Smart function code
-       */
-      function_code: CodeAPI.ParsedCode;
+    export namespace DeployFunction {
+      export interface Kt1 {
+        Kt1: string;
+      }
     }
 
     export interface RunFunction {
@@ -129,36 +111,161 @@ export namespace OperationInjectParams {
       body: Array<number> | null;
 
       /**
-       * Maximum amount of gas that is allowed for the execution of this operation
-       */
-      gas_limit: number;
-
-      /**
        * Any valid HTTP headers
        */
       headers: Record<string, unknown>;
 
       /**
-       * Any valid HTTP method
+       * Valid status code
        */
-      method: string;
+      status_code: number;
+    }
+
+    export interface Deposit {
+      _type: 'Deposit';
 
       /**
-       * Smart function URI in the form tezos://{smart_function_address}/rest/of/path
+       * Tezos Address
        */
-      uri: string;
+      account: string | Deposit.Kt1;
+
+      updated_balance: number;
     }
+
+    export namespace Deposit {
+      export interface Kt1 {
+        Kt1: string;
+      }
+    }
+
+    export interface FaDeposit {
+      _type: 'FaDeposit';
+
+      /**
+       * Tezos Address
+       */
+      receiver: string | FaDeposit.Kt1;
+
+      ticket_balance: number;
+
+      run_function?: FaDeposit.RunFunction | null;
+    }
+
+    export namespace FaDeposit {
+      export interface Kt1 {
+        Kt1: string;
+      }
+
+      export interface RunFunction {
+        body: Array<number> | null;
+
+        /**
+         * Any valid HTTP headers
+         */
+        headers: Record<string, unknown>;
+
+        /**
+         * Valid status code
+         */
+        status_code: number;
+      }
+    }
+
+    export interface FaWithdraw {
+      _type: 'FaWithdraw';
+
+      outbox_message_id: string;
+
+      /**
+       * Tezos Address
+       */
+      source: string | FaWithdraw.Kt1;
+    }
+
+    export namespace FaWithdraw {
+      export interface Kt1 {
+        Kt1: string;
+      }
+    }
+  }
+
+  export interface Failure {
+    _type: 'Failed';
+
+    inner: string;
   }
 }
 
-Operations.ReceiptResource = ReceiptResource;
+export interface SignedOperation {
+  inner: Operation;
+
+  /**
+   * Tezos public key
+   */
+  public_key: Shared.PublicKey;
+
+  signature: Shared.Signature;
+}
+
+export type OperationHashResponse = Array<number>;
+
+export interface OperationHashParams {
+  /**
+   * Request used to run a smart function. The target smart function is given by the
+   * host part of the uri. The rest of the attributes will be handled by the smart
+   * function itself.
+   */
+  content: OperationHashParams.DeployFunction | OperationHashParams.RunFunction;
+
+  nonce: AccountsAPI.Nonce;
+
+  /**
+   * Tezos Address
+   */
+  source: Shared.PublicKeyHash;
+}
+
+export namespace OperationHashParams {
+  export interface DeployFunction extends ContentAPI.DeployFunction {
+    _type: 'DeployFunction';
+  }
+
+  /**
+   * Request used to run a smart function. The target smart function is given by the
+   * host part of the uri. The rest of the attributes will be handled by the smart
+   * function itself.
+   */
+  export interface RunFunction extends ContentAPI.RunFunction {
+    _type: 'RunFunction';
+  }
+}
+
+export interface OperationInjectParams {
+  inner: Operation;
+
+  /**
+   * Tezos public key
+   */
+  public_key: Shared.PublicKey;
+
+  signature: Shared.Signature;
+}
+
+Operations.Content = Content;
 
 export declare namespace Operations {
   export {
+    type Operation as Operation,
+    type Receipt as Receipt,
+    type SignedOperation as SignedOperation,
     type OperationHashResponse as OperationHashResponse,
     type OperationHashParams as OperationHashParams,
     type OperationInjectParams as OperationInjectParams,
   };
 
-  export { ReceiptResource as ReceiptResource, type Receipt as Receipt };
+  export {
+    Content as Content,
+    type ContentAPIDeployFunction as DeployFunction,
+    type ContentAPIRunFunction as RunFunction,
+  };
 }
