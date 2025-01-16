@@ -6,6 +6,15 @@ import * as Errors from './error';
 import * as Uploads from './uploads';
 import * as API from './resources/index';
 import {
+  Operation,
+  OperationHashParams,
+  OperationHashResponse,
+  OperationInjectParams,
+  Operations,
+  Receipt,
+  SignedOperation,
+} from './resources/operations';
+import {
   Account,
   AccountGetBalanceResponse,
   AccountGetSubkeysResponse,
@@ -14,15 +23,6 @@ import {
   KvValue,
   Nonce,
 } from './resources/accounts/accounts';
-import {
-  Operation,
-  OperationHashParams,
-  OperationHashResponse,
-  OperationInjectParams,
-  Operations,
-  Receipt,
-  SignedOperation,
-} from './resources/operations/operations';
 
 export interface ClientOptions {
   /**

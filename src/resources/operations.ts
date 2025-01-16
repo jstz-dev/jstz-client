@@ -1,19 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import { APIResource } from '../../resource';
-import * as Core from '../../core';
-import * as Shared from '../shared';
-import * as AccountsAPI from '../accounts/accounts';
-import * as ContentAPI from './content';
-import {
-  Content,
-  DeployFunction as ContentAPIDeployFunction,
-  RunFunction as ContentAPIRunFunction,
-} from './content';
+import { APIResource } from '../resource';
+import * as Core from '../core';
+import * as Shared from './shared';
+import * as AccountsAPI from './accounts/accounts';
 
 export class Operations extends APIResource {
-  content: ContentAPI.Content = new ContentAPI.Content(this._client);
-
   /**
    * Get the receipt of an operation
    */
@@ -22,10 +14,14 @@ export class Operations extends APIResource {
   }
 
   /**
-   * Returns the hash of an Operation
+   * Returns the hex encoded hash of an Operation
    */
-  hash(body: OperationHashParams, options?: Core.RequestOptions): Core.APIPromise<OperationHashResponse> {
-    return this._client.post('/operations/hash', { body, ...options });
+  hash(body: OperationHashParams, options?: Core.RequestOptions): Core.APIPromise<string> {
+    return this._client.post('/operations/hash', {
+      body,
+      ...options,
+      headers: { Accept: 'application/json', ...options?.headers },
+    });
   }
 
   /**
@@ -41,11 +37,6 @@ export class Operations extends APIResource {
 }
 
 export interface Operation {
-  /**
-   * Request used to run a smart function. The target smart function is given by the
-   * host part of the uri. The rest of the attributes will be handled by the smart
-   * function itself.
-   */
   content: Operation.DeployFunction | Operation.RunFunction;
 
   nonce: AccountsAPI.Nonce;
@@ -57,17 +48,44 @@ export interface Operation {
 }
 
 export namespace Operation {
-  export interface DeployFunction extends ContentAPI.DeployFunction {
+  export interface DeployFunction {
     _type: 'DeployFunction';
+
+    /**
+     * Amount of tez to credit to the smart function account, debited from the sender
+     */
+    account_credit: number;
+
+    /**
+     * Smart function code
+     */
+    function_code: AccountsAPI.Code;
   }
 
-  /**
-   * Request used to run a smart function. The target smart function is given by the
-   * host part of the uri. The rest of the attributes will be handled by the smart
-   * function itself.
-   */
-  export interface RunFunction extends ContentAPI.RunFunction {
+  export interface RunFunction {
     _type: 'RunFunction';
+
+    body: Array<number> | null;
+
+    /**
+     * Maximum amount of gas that is allowed for the execution of this operation
+     */
+    gas_limit: number;
+
+    /**
+     * Any valid HTTP headers
+     */
+    headers: Record<string, unknown>;
+
+    /**
+     * Any valid HTTP method
+     */
+    method: string;
+
+    /**
+     * Smart function URI in the form tezos://{smart_function_address}/rest/of/path
+     */
+    uri: string;
   }
 }
 
@@ -207,14 +225,9 @@ export interface SignedOperation {
   signature: Shared.Signature;
 }
 
-export type OperationHashResponse = Array<number>;
+export type OperationHashResponse = string;
 
 export interface OperationHashParams {
-  /**
-   * Request used to run a smart function. The target smart function is given by the
-   * host part of the uri. The rest of the attributes will be handled by the smart
-   * function itself.
-   */
   content: OperationHashParams.DeployFunction | OperationHashParams.RunFunction;
 
   nonce: AccountsAPI.Nonce;
@@ -226,17 +239,44 @@ export interface OperationHashParams {
 }
 
 export namespace OperationHashParams {
-  export interface DeployFunction extends ContentAPI.DeployFunction {
+  export interface DeployFunction {
     _type: 'DeployFunction';
+
+    /**
+     * Amount of tez to credit to the smart function account, debited from the sender
+     */
+    account_credit: number;
+
+    /**
+     * Smart function code
+     */
+    function_code: AccountsAPI.Code;
   }
 
-  /**
-   * Request used to run a smart function. The target smart function is given by the
-   * host part of the uri. The rest of the attributes will be handled by the smart
-   * function itself.
-   */
-  export interface RunFunction extends ContentAPI.RunFunction {
+  export interface RunFunction {
     _type: 'RunFunction';
+
+    body: Array<number> | null;
+
+    /**
+     * Maximum amount of gas that is allowed for the execution of this operation
+     */
+    gas_limit: number;
+
+    /**
+     * Any valid HTTP headers
+     */
+    headers: Record<string, unknown>;
+
+    /**
+     * Any valid HTTP method
+     */
+    method: string;
+
+    /**
+     * Smart function URI in the form tezos://{smart_function_address}/rest/of/path
+     */
+    uri: string;
   }
 }
 
@@ -251,8 +291,6 @@ export interface OperationInjectParams {
   signature: Shared.Signature;
 }
 
-Operations.Content = Content;
-
 export declare namespace Operations {
   export {
     type Operation as Operation,
@@ -261,11 +299,5 @@ export declare namespace Operations {
     type OperationHashResponse as OperationHashResponse,
     type OperationHashParams as OperationHashParams,
     type OperationInjectParams as OperationInjectParams,
-  };
-
-  export {
-    Content as Content,
-    type ContentAPIDeployFunction as DeployFunction,
-    type ContentAPIRunFunction as RunFunction,
   };
 }
