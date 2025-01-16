@@ -9,7 +9,7 @@ The REST API documentation can be found on [jstz-dev.github.io](https://jstz-dev
 ## Installation
 
 ```sh
-npm install git+ssh://git@github.com:jstz-dev/jstz-client.git
+npm install git+ssh://git@github.com:jstz-dev/jstz-clien.git
 ```
 
 > [!NOTE]
@@ -210,7 +210,7 @@ import JstzClient from '@jstz-dev/client';
 ```
 
 To do the inverse, add `import "@jstz-dev/client/shims/node"` (which does import polyfills).
-This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/jstz-dev/jstz-client/tree/main/src/_shims#readme)).
+This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/jstz-dev/jstz-clien/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
 
@@ -266,7 +266,7 @@ This package generally follows [SemVer](https://semver.org/spec/v2.0.0.html) con
 
 We take backwards-compatibility seriously and work hard to ensure you can rely on a smooth upgrade experience.
 
-We are keen for your feedback; please open an [issue](https://www.github.com/jstz-dev/jstz-client/issues) with questions, bugs, or suggestions.
+We are keen for your feedback; please open an [issue](https://www.github.com/jstz-dev/jstz-clien/issues) with questions, bugs, or suggestions.
 
 ## Requirements
 
