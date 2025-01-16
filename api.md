@@ -40,20 +40,13 @@ Types:
 
 Types:
 
-- <code><a href="./src/resources/operations/operations.ts">Operation</a></code>
-- <code><a href="./src/resources/operations/operations.ts">Receipt</a></code>
-- <code><a href="./src/resources/operations/operations.ts">SignedOperation</a></code>
-- <code><a href="./src/resources/operations/operations.ts">OperationHashResponse</a></code>
+- <code><a href="./src/resources/operations.ts">Operation</a></code>
+- <code><a href="./src/resources/operations.ts">Receipt</a></code>
+- <code><a href="./src/resources/operations.ts">SignedOperation</a></code>
+- <code><a href="./src/resources/operations.ts">OperationHashResponse</a></code>
 
 Methods:
 
-- <code title="get /operations/{operation_hash}/receipt">client.operations.<a href="./src/resources/operations/operations.ts">getReceipt</a>(operationHash) -> Receipt</code>
-- <code title="post /operations/hash">client.operations.<a href="./src/resources/operations/operations.ts">hash</a>({ ...params }) -> OperationHashResponse</code>
-- <code title="post /operations">client.operations.<a href="./src/resources/operations/operations.ts">inject</a>({ ...params }) -> void</code>
-
-## Content
-
-Types:
-
-- <code><a href="./src/resources/operations/content.ts">DeployFunction</a></code>
-- <code><a href="./src/resources/operations/content.ts">RunFunction</a></code>
+- <code title="get /operations/{operation_hash}/receipt">client.operations.<a href="./src/resources/operations.ts">getReceipt</a>(operationHash) -> Receipt</code>
+- <code title="post /operations/hash">client.operations.<a href="./src/resources/operations.ts">hash</a>({ ...params }) -> string</code>
+- <code title="post /operations">client.operations.<a href="./src/resources/operations.ts">inject</a>({ ...params }) -> void</code>

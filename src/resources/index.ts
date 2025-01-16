@@ -18,4 +18,4 @@ export {
   type OperationHashResponse,
   type OperationHashParams,
   type OperationInjectParams,
-} from './operations/operations';
+} from './operations';

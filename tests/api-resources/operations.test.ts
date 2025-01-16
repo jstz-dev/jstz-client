@@ -27,9 +27,9 @@ describe('resource operations', () => {
   test('hash: only required params', async () => {
     const responsePromise = client.operations.hash({
       content: {
+        _type: 'DeployFunction',
         account_credit: 0,
         function_code: "export default (request) => new Response('Hello world!')",
-        _type: 'DeployFunction',
       },
       nonce: 0,
       source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
@@ -46,9 +46,9 @@ describe('resource operations', () => {
   test('hash: required and optional params', async () => {
     const response = await client.operations.hash({
       content: {
+        _type: 'DeployFunction',
         account_credit: 0,
         function_code: "export default (request) => new Response('Hello world!')",
-        _type: 'DeployFunction',
       },
       nonce: 0,
       source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
@@ -59,9 +59,9 @@ describe('resource operations', () => {
     const responsePromise = client.operations.inject({
       inner: {
         content: {
+          _type: 'DeployFunction',
           account_credit: 0,
           function_code: "export default (request) => new Response('Hello world!')",
-          _type: 'DeployFunction',
         },
         nonce: 0,
         source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
@@ -83,9 +83,9 @@ describe('resource operations', () => {
     const response = await client.operations.inject({
       inner: {
         content: {
+          _type: 'DeployFunction',
           account_credit: 0,
           function_code: "export default (request) => new Response('Hello world!')",
-          _type: 'DeployFunction',
         },
         nonce: 0,
         source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
