@@ -8,7 +8,10 @@ export class Balance extends APIResource {
    * Get balance of an account
    */
   retrieve(address: string, options?: Core.RequestOptions): Core.APIPromise<BalanceRetrieveResponse> {
-    return this._client.get(`/accounts/${address}/balance`, options);
+    return this._client.get(`/accounts/${address}/balance`, {
+      ...options,
+      headers: { Accept: 'text/plain', ...options?.headers },
+    });
   }
 }
 
