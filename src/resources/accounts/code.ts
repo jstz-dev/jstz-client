@@ -8,10 +8,7 @@ export class Code extends APIResource {
    * Get code of an account
    */
   retrieve(address: string, options?: Core.RequestOptions): Core.APIPromise<string> {
-    return this._client.get(`/accounts/${address}/code`, {
-      ...options,
-      headers: { Accept: 'application/json', ...options?.headers },
-    });
+    return this._client.get(`/accounts/${address}/code`, options);
   }
 }
 

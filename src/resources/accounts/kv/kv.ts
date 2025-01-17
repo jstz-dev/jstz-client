@@ -13,10 +13,7 @@ export class Kv extends APIResource {
    * the empty key path will be used.
    */
   retrieve(address: string, options?: Core.RequestOptions): Core.APIPromise<string> {
-    return this._client.get(`/accounts/${address}/kv`, {
-      ...options,
-      headers: { Accept: 'application/json', ...options?.headers },
-    });
+    return this._client.get(`/accounts/${address}/kv`, options);
   }
 }
 
