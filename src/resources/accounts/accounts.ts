@@ -3,17 +3,11 @@
 import { APIResource } from '../../resource';
 import * as Core from '../../core';
 import * as AccountsAPI from './accounts';
-import * as LogsAPI from './logs';
-import { LogRecord, Logs } from './logs';
-import * as MethodsAPI from './methods';
-import { Methods } from './methods';
-import * as SubresourcesAPI from './subresources';
-import { Subresources } from './subresources';
+import * as LogsAPI from './logs/logs';
+import { Log, Logs } from './logs/logs';
 
 export class Accounts extends APIResource {
   logs: LogsAPI.Logs = new LogsAPI.Logs(this._client);
-  methods: MethodsAPI.Methods = new MethodsAPI.Methods(this._client);
-  subresources: SubresourcesAPI.Subresources = new SubresourcesAPI.Subresources(this._client);
 
   /**
    * Get account
@@ -107,8 +101,6 @@ export type AccountGetBalanceResponse = number;
 export type AccountGetSubkeysResponse = Array<string>;
 
 Accounts.Logs = Logs;
-Accounts.Methods = Methods;
-Accounts.Subresources = Subresources;
 
 export declare namespace Accounts {
   export {
@@ -120,9 +112,5 @@ export declare namespace Accounts {
     type AccountGetSubkeysResponse as AccountGetSubkeysResponse,
   };
 
-  export { Logs as Logs, type LogRecord as LogRecord };
-
-  export { Methods as Methods };
-
-  export { Subresources as Subresources };
+  export { Logs as Logs, type Log as Log };
 }

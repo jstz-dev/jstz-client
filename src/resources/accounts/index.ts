@@ -9,6 +9,4 @@ export {
   type AccountGetBalanceResponse,
   type AccountGetSubkeysResponse,
 } from './accounts';
-export { Logs, type LogRecord } from './logs';
-export { Methods } from './methods';
-export { Subresources } from './subresources';
+export { Logs, type Log } from './logs/index';
