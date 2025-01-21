@@ -1,11 +1,11 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import type { JstzClient } from './index';
+import type { Jstz } from './index';
 
 export class APIResource {
-  protected _client: JstzClient;
+  protected _client: Jstz;
 
-  constructor(client: JstzClient) {
+  constructor(client: Jstz) {
     this._client = client;
   }
 }
