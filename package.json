@@ -1,12 +1,12 @@
 {
   "name": "@jstz-dev/client",
   "version": "0.1.0-alpha.1",
-  "description": "The official TypeScript library for the Jstz Client API",
-  "author": "Jstz Client <contact@trili.tech>",
+  "description": "The official TypeScript library for the Jstz API",
+  "author": "Jstz <contact@trili.tech>",
   "types": "dist/index.d.ts",
   "main": "dist/index.js",
   "type": "commonjs",
-  "repository": "github:stainless-sdks/jstz-client-node",
+  "repository": "github:jstz-dev/jstz-client",
   "license": "Apache-2.0",
   "packageManager": "yarn@1.22.22",
   "files": [
