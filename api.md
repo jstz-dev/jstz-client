@@ -30,11 +30,23 @@ Methods:
 
 Types:
 
-- <code><a href="./src/resources/accounts/logs.ts">LogRecord</a></code>
+- <code><a href="./src/resources/accounts/logs/logs.ts">Log</a></code>
 
-## Methods
+Methods:
 
-## Subresources
+- <code title="get /logs/{address}/stream">client.accounts.logs.<a href="./src/resources/accounts/logs/logs.ts">stream</a>(address) -> void</code>
+
+### Persistent
+
+Types:
+
+- <code><a href="./src/resources/accounts/logs/persistent.ts">PersistentListResponse</a></code>
+- <code><a href="./src/resources/accounts/logs/persistent.ts">PersistentGetResponse</a></code>
+
+Methods:
+
+- <code title="get /logs/{address}/persistent/requests">client.accounts.logs.persistent.<a href="./src/resources/accounts/logs/persistent.ts">list</a>(address, { ...params }) -> PersistentListResponse</code>
+- <code title="get /logs/{address}/persistent/requests/{request_id}">client.accounts.logs.persistent.<a href="./src/resources/accounts/logs/persistent.ts">get</a>(address, requestId) -> PersistentGetResponse</code>
 
 # Operations
 
