@@ -1,5 +1,20 @@
 # Changelog
 
+## 0.1.0-alpha.3 (2025-01-24)
+
+Full Changelog: [v0.1.0-alpha.2...v0.1.0-alpha.3](https://github.com/jstz-dev/jstz-client/compare/v0.1.0-alpha.2...v0.1.0-alpha.3)
+
+### Features
+
+* **api:** api update ([#23](https://github.com/jstz-dev/jstz-client/issues/23)) ([2f74e40](https://github.com/jstz-dev/jstz-client/commit/2f74e407dd4a5acd75a6481a209b74b87414a160))
+* **api:** api update ([#27](https://github.com/jstz-dev/jstz-client/issues/27)) ([2e61bb5](https://github.com/jstz-dev/jstz-client/commit/2e61bb576da2e57be0afe245e58926da889d9f80))
+* **api:** api update ([#28](https://github.com/jstz-dev/jstz-client/issues/28)) ([c0e176e](https://github.com/jstz-dev/jstz-client/commit/c0e176e46d7142fc3930a05717cae1d77d8cc95d))
+
+
+### Bug Fixes
+
+* **package.json:** patch node version ([cc9bacf](https://github.com/jstz-dev/jstz-client/commit/cc9bacf90420bd2d2ad8b7c2994a2475a1fc6720))
+
 ## 0.1.0-alpha.2 (2025-01-22)
 
 Full Changelog: [v0.1.0-alpha.1...v0.1.0-alpha.2](https://github.com/jstz-dev/jstz-client/compare/v0.1.0-alpha.1...v0.1.0-alpha.2)
