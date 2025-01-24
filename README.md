@@ -9,8 +9,11 @@ The REST API documentation can be found on [jstz-dev.github.io](https://jstz-dev
 ## Installation
 
 ```sh
-npm install @jstz-dev/client
+npm install git+ssh://git@github.com:jstz-dev/jstz-client.git
 ```
+
+> [!NOTE]
+> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install @jstz-dev/client`
 
 ## Usage
 

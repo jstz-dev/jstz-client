@@ -157,13 +157,13 @@ describe('instantiate client', () => {
     test('empty env variable', () => {
       process.env['JSTZ_BASE_URL'] = ''; // empty
       const client = new Jstz({});
-      expect(client.baseURL).toEqual('https://localhost:8933');
+      expect(client.baseURL).toEqual('http://localhost:8933');
     });
 
     test('blank env variable', () => {
       process.env['JSTZ_BASE_URL'] = '  '; // blank
       const client = new Jstz({});
-      expect(client.baseURL).toEqual('https://localhost:8933');
+      expect(client.baseURL).toEqual('http://localhost:8933');
     });
   });
 
