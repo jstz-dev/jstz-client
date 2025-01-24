@@ -107,9 +107,6 @@ export namespace Receipt {
     export interface DeployFunction {
       _type: 'DeployFunction';
 
-      /**
-       * Tezos Address
-       */
       address: string;
     }
 
