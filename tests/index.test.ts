@@ -1,8 +1,8 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Jstz from '@jstz-dev/client';
-import { APIUserAbortError } from '@jstz-dev/client';
-import { Headers } from '@jstz-dev/client/core';
+import Jstz from '@jstz-dev/jstz-client';
+import { APIUserAbortError } from '@jstz-dev/jstz-client';
+import { Headers } from '@jstz-dev/jstz-client/core';
 import defaultFetch, { Response, type RequestInit, type RequestInfo } from 'node-fetch';
 
 describe('instantiate client', () => {

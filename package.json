@@ -1,5 +1,5 @@
 {
-  "name": "@jstz-dev/client",
+  "name": "@jstz-dev/jstz-client",
   "version": "0.1.0-alpha.2",
   "description": "The official TypeScript library for the Jstz API",
   "author": "Jstz <contact@trili.tech>",
@@ -59,8 +59,8 @@
     "./shims/web.mjs"
   ],
   "imports": {
-    "@jstz-dev/client": ".",
-    "@jstz-dev/client/*": "./src/*"
+    "@jstz-dev/jstz-client": ".",
+    "@jstz-dev/jstz-client/*": "./src/*"
   },
   "exports": {
     "./_shims/auto/*": {
