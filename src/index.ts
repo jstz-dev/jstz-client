@@ -17,6 +17,8 @@ import {
 import {
   Account,
   AccountGetBalanceResponse,
+  AccountGetKvParams,
+  AccountGetSubkeysParams,
   AccountGetSubkeysResponse,
   Accounts,
   Code,
@@ -91,7 +93,7 @@ export class Jstz extends Core.APIClient {
   /**
    * API Client for interfacing with the Jstz API.
    *
-   * @param {string} [opts.baseURL=process.env['JSTZ_BASE_URL'] ?? https://localhost:8933] - Override the default base URL for the API.
+   * @param {string} [opts.baseURL=process.env['JSTZ_BASE_URL'] ?? http://localhost:8933] - Override the default base URL for the API.
    * @param {number} [opts.timeout=1 minute] - The maximum amount of time (in milliseconds) the client will wait for a response before timing out.
    * @param {number} [opts.httpAgent] - An HTTP agent used to manage HTTP(s) connections.
    * @param {Core.Fetch} [opts.fetch] - Specify a custom `fetch` function implementation.
@@ -102,7 +104,7 @@ export class Jstz extends Core.APIClient {
   constructor({ baseURL = Core.readEnv('JSTZ_BASE_URL'), ...opts }: ClientOptions = {}) {
     const options: ClientOptions = {
       ...opts,
-      baseURL: baseURL || `https://localhost:8933`,
+      baseURL: baseURL || `http://localhost:8933`,
     };
 
     super({
@@ -164,6 +166,8 @@ export declare namespace Jstz {
     type Nonce as Nonce,
     type AccountGetBalanceResponse as AccountGetBalanceResponse,
     type AccountGetSubkeysResponse as AccountGetSubkeysResponse,
+    type AccountGetKvParams as AccountGetKvParams,
+    type AccountGetSubkeysParams as AccountGetSubkeysParams,
   };
 
   export {

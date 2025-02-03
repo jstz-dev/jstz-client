@@ -26,9 +26,6 @@ export class Logs extends APIResource {
 }
 
 export interface Log {
-  /**
-   * Tezos Address
-   */
   address: string;
 
   level: 'ERROR' | 'WARN' | 'INFO' | 'LOG';

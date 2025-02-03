@@ -1,6 +1,6 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
-import Jstz from '@jstz-dev/client';
+import Jstz from '@jstz-dev/jstz-client';
 import { Response } from 'node-fetch';
 
 const client = new Jstz({ baseURL: process.env['TEST_API_BASE_URL'] ?? 'http://127.0.0.1:4010' });
@@ -78,6 +78,13 @@ describe('resource accounts', () => {
     );
   });
 
+  test('getKv: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.accounts.getKv('address', { key: 'key' }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Jstz.NotFoundError);
+  });
+
   test('getNonce', async () => {
     const responsePromise = client.accounts.getNonce('address');
     const rawResponse = await responsePromise.asResponse();
@@ -112,5 +119,12 @@ describe('resource accounts', () => {
     await expect(client.accounts.getSubkeys('address', { path: '/_stainless_unknown_path' })).rejects.toThrow(
       Jstz.NotFoundError,
     );
+  });
+
+  test('getSubkeys: request options and params are passed correctly', async () => {
+    // ensure the request options are being passed correctly by passing an invalid HTTP method in order to cause an error
+    await expect(
+      client.accounts.getSubkeys('address', { key: 'key' }, { path: '/_stainless_unknown_path' }),
+    ).rejects.toThrow(Jstz.NotFoundError);
   });
 });

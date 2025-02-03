@@ -8,5 +8,7 @@ export {
   type Nonce,
   type AccountGetBalanceResponse,
   type AccountGetSubkeysResponse,
+  type AccountGetKvParams,
+  type AccountGetSubkeysParams,
 } from './accounts';
 export { Logs, type Log } from './logs/index';
