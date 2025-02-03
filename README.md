@@ -1,6 +1,6 @@
 # Jstz Client API Library
 
-[![NPM version](https://img.shields.io/npm/v/@jstz-dev/client.svg)](https://npmjs.org/package/@jstz-dev/client) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@jstz-dev/client)
+[![NPM version](https://img.shields.io/npm/v/@jstz-dev/jstz-client.svg)](https://npmjs.org/package/@jstz-dev/jstz-client) ![npm bundle size](https://img.shields.io/bundlephobia/minzip/@jstz-dev/jstz-client)
 
 This library provides convenient access to the Jstz REST API from server-side TypeScript or JavaScript.
 
@@ -13,7 +13,7 @@ npm install git+ssh://git@github.com:jstz-dev/jstz-client.git
 ```
 
 > [!NOTE]
-> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install @jstz-dev/client`
+> Once this package is [published to npm](https://app.stainlessapi.com/docs/guides/publish), this will become: `npm install @jstz-dev/jstz-client`
 
 ## Usage
 
@@ -21,7 +21,7 @@ The full API of this library can be found in [api.md](api.md).
 
 <!-- prettier-ignore -->
 ```js
-import Jstz from '@jstz-dev/client';
+import Jstz from '@jstz-dev/jstz-client';
 
 const client = new Jstz();
 
@@ -38,7 +38,7 @@ This library includes TypeScript definitions for all request params and response
 
 <!-- prettier-ignore -->
 ```ts
-import Jstz from '@jstz-dev/client';
+import Jstz from '@jstz-dev/jstz-client';
 
 const client = new Jstz();
 
@@ -205,11 +205,11 @@ add the following import before your first import `from "Jstz"`:
 ```ts
 // Tell TypeScript and the package to use the global web fetch instead of node-fetch.
 // Note, despite the name, this does not add any polyfills, but expects them to be provided if needed.
-import '@jstz-dev/client/shims/web';
-import Jstz from '@jstz-dev/client';
+import '@jstz-dev/jstz-client/shims/web';
+import Jstz from '@jstz-dev/jstz-client';
 ```
 
-To do the inverse, add `import "@jstz-dev/client/shims/node"` (which does import polyfills).
+To do the inverse, add `import "@jstz-dev/jstz-client/shims/node"` (which does import polyfills).
 This can also be useful if you are getting the wrong TypeScript types for `Response` ([more details](https://github.com/jstz-dev/jstz-client/tree/main/src/_shims#readme)).
 
 ### Logging and middleware
@@ -219,7 +219,7 @@ which can be used to inspect or alter the `Request` or `Response` before/after e
 
 ```ts
 import { fetch } from 'undici'; // as one example
-import Jstz from '@jstz-dev/client';
+import Jstz from '@jstz-dev/jstz-client';
 
 const client = new Jstz({
   fetch: async (url: RequestInfo, init?: RequestInit): Promise<Response> => {

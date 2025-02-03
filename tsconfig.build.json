@@ -5,8 +5,8 @@
   "compilerOptions": {
     "rootDir": "./dist/src",
     "paths": {
-      "@jstz-dev/client/*": ["dist/src/*"],
-      "@jstz-dev/client": ["dist/src/index.ts"],
+      "@jstz-dev/jstz-client/*": ["dist/src/*"],
+      "@jstz-dev/jstz-client": ["dist/src/index.ts"],
     },
     "noEmit": false,
     "declaration": true,

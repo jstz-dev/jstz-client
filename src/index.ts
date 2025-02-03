@@ -17,6 +17,8 @@ import {
 import {
   Account,
   AccountGetBalanceResponse,
+  AccountGetKvParams,
+  AccountGetSubkeysParams,
   AccountGetSubkeysResponse,
   Accounts,
   Code,
@@ -164,6 +166,8 @@ export declare namespace Jstz {
     type Nonce as Nonce,
     type AccountGetBalanceResponse as AccountGetBalanceResponse,
     type AccountGetSubkeysResponse as AccountGetSubkeysResponse,
+    type AccountGetKvParams as AccountGetKvParams,
+    type AccountGetSubkeysParams as AccountGetSubkeysParams,
   };
 
   export {
