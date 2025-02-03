@@ -1,6 +1,6 @@
-import { multipartFormRequestOptions, createForm } from '@jstz-dev/client/core';
-import { Blob } from '@jstz-dev/client/_shims/index';
-import { toFile } from '@jstz-dev/client';
+import { multipartFormRequestOptions, createForm } from '@jstz-dev/jstz-client/core';
+import { Blob } from '@jstz-dev/jstz-client/_shims/index';
+import { toFile } from '@jstz-dev/jstz-client';
 
 describe('form data validation', () => {
   test('valid values do not error', async () => {

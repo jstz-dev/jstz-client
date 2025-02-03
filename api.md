@@ -22,9 +22,9 @@ Methods:
 - <code title="get /accounts/{address}">client.accounts.<a href="./src/resources/accounts/accounts.ts">get</a>(address) -> Account</code>
 - <code title="get /accounts/{address}/balance">client.accounts.<a href="./src/resources/accounts/accounts.ts">getBalance</a>(address) -> AccountGetBalanceResponse</code>
 - <code title="get /accounts/{address}/code">client.accounts.<a href="./src/resources/accounts/accounts.ts">getCode</a>(address) -> string</code>
-- <code title="get /accounts/{address}/kv">client.accounts.<a href="./src/resources/accounts/accounts.ts">getKv</a>(address) -> string</code>
+- <code title="get /accounts/{address}/kv">client.accounts.<a href="./src/resources/accounts/accounts.ts">getKv</a>(address, { ...params }) -> string</code>
 - <code title="get /accounts/{address}/nonce">client.accounts.<a href="./src/resources/accounts/accounts.ts">getNonce</a>(address) -> Nonce</code>
-- <code title="get /accounts/{address}/kv/subkeys">client.accounts.<a href="./src/resources/accounts/accounts.ts">getSubkeys</a>(address) -> AccountGetSubkeysResponse</code>
+- <code title="get /accounts/{address}/kv/subkeys">client.accounts.<a href="./src/resources/accounts/accounts.ts">getSubkeys</a>(address, { ...params }) -> AccountGetSubkeysResponse</code>
 
 ## Logs
 

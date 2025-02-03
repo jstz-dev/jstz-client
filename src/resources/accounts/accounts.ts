@@ -1,6 +1,7 @@
 // File generated from our OpenAPI spec by Stainless. See CONTRIBUTING.md for details.
 
 import { APIResource } from '../../resource';
+import { isRequestOptions } from '../../core';
 import * as Core from '../../core';
 import * as AccountsAPI from './accounts';
 import * as LogsAPI from './logs/logs';
@@ -37,8 +38,17 @@ export class Accounts extends APIResource {
    * Get KV value under a given key path for an account. If `key` is not provided,
    * the empty key path will be used.
    */
-  getKv(address: string, options?: Core.RequestOptions): Core.APIPromise<string> {
-    return this._client.get(`/accounts/${address}/kv`, options);
+  getKv(address: string, query?: AccountGetKvParams, options?: Core.RequestOptions): Core.APIPromise<string>;
+  getKv(address: string, options?: Core.RequestOptions): Core.APIPromise<string>;
+  getKv(
+    address: string,
+    query: AccountGetKvParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<string> {
+    if (isRequestOptions(query)) {
+      return this.getKv(address, {}, query);
+    }
+    return this._client.get(`/accounts/${address}/kv`, { query, ...options });
   }
 
   /**
@@ -52,8 +62,21 @@ export class Accounts extends APIResource {
    * Get array of KV subkeys under a given key path for an account. If `key` is not
    * provided, the empty key path will be used.
    */
-  getSubkeys(address: string, options?: Core.RequestOptions): Core.APIPromise<AccountGetSubkeysResponse> {
-    return this._client.get(`/accounts/${address}/kv/subkeys`, options);
+  getSubkeys(
+    address: string,
+    query?: AccountGetSubkeysParams,
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<AccountGetSubkeysResponse>;
+  getSubkeys(address: string, options?: Core.RequestOptions): Core.APIPromise<AccountGetSubkeysResponse>;
+  getSubkeys(
+    address: string,
+    query: AccountGetSubkeysParams | Core.RequestOptions = {},
+    options?: Core.RequestOptions,
+  ): Core.APIPromise<AccountGetSubkeysResponse> {
+    if (isRequestOptions(query)) {
+      return this.getSubkeys(address, {}, query);
+    }
+    return this._client.get(`/accounts/${address}/kv/subkeys`, { query, ...options });
   }
 }
 
@@ -100,6 +123,14 @@ export type AccountGetBalanceResponse = number;
 
 export type AccountGetSubkeysResponse = Array<string>;
 
+export interface AccountGetKvParams {
+  key?: string | null;
+}
+
+export interface AccountGetSubkeysParams {
+  key?: string | null;
+}
+
 Accounts.Logs = Logs;
 
 export declare namespace Accounts {
@@ -110,6 +141,8 @@ export declare namespace Accounts {
     type Nonce as Nonce,
     type AccountGetBalanceResponse as AccountGetBalanceResponse,
     type AccountGetSubkeysResponse as AccountGetSubkeysResponse,
+    type AccountGetKvParams as AccountGetKvParams,
+    type AccountGetSubkeysParams as AccountGetSubkeysParams,
   };
 
   export { Logs as Logs, type Log as Log };
