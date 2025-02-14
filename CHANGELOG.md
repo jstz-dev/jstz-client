@@ -1,5 +1,19 @@
 # Changelog
 
+## 0.2.0-alpha.1 (2025-02-14)
+
+Full Changelog: [v0.1.1-alpha.0...v0.2.0-alpha.1](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.0...v0.2.0-alpha.1)
+
+### Features
+
+* **api:** api update ([#34](https://github.com/jstz-dev/jstz-client/issues/34)) ([362311b](https://github.com/jstz-dev/jstz-client/commit/362311b107cce988404a4baaf494183b591e63bb))
+* **client:** send `X-Stainless-Timeout` header ([#36](https://github.com/jstz-dev/jstz-client/issues/36)) ([6adcf96](https://github.com/jstz-dev/jstz-client/commit/6adcf96cab2a4b2294cf4fd43f33ab281d8d6a0c))
+
+
+### Bug Fixes
+
+* **client:** fix export map for index exports ([#37](https://github.com/jstz-dev/jstz-client/issues/37)) ([56e59f8](https://github.com/jstz-dev/jstz-client/commit/56e59f831aa9fdca71ff4f58f7903910e2de6144))
+
 ## 0.1.1-alpha.0 (2025-02-03)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.1-alpha.0](https://github.com/jstz-dev/jstz-client/compare/v0.1.0-alpha.2...v0.1.1-alpha.0)
