@@ -33,14 +33,20 @@ export class Operations extends APIResource {
 }
 
 export interface Operation {
+  /**
+   * The content of the operation
+   */
   content: Operation.DeployFunction | Operation.RunFunction;
 
+  /**
+   * Nonce is used to avoid replay attacks.
+   */
   nonce: AccountsAPI.Nonce;
 
   /**
-   * Tezos Address
+   * The public key of the account which was used to sign the operation
    */
-  source: Shared.PublicKeyHash;
+  public_key: Shared.PublicKey;
 }
 
 export namespace Operation {
@@ -188,25 +194,26 @@ export namespace Receipt {
 export interface SignedOperation {
   inner: Operation;
 
-  /**
-   * Tezos public key
-   */
-  public_key: Shared.PublicKey;
-
   signature: Shared.Signature;
 }
 
 export type OperationHashResponse = string;
 
 export interface OperationHashParams {
+  /**
+   * The content of the operation
+   */
   content: OperationHashParams.DeployFunction | OperationHashParams.RunFunction;
 
+  /**
+   * Nonce is used to avoid replay attacks.
+   */
   nonce: AccountsAPI.Nonce;
 
   /**
-   * Tezos Address
+   * The public key of the account which was used to sign the operation
    */
-  source: Shared.PublicKeyHash;
+  public_key: Shared.PublicKey;
 }
 
 export namespace OperationHashParams {
@@ -253,11 +260,6 @@ export namespace OperationHashParams {
 
 export interface OperationInjectParams {
   inner: Operation;
-
-  /**
-   * Tezos public key
-   */
-  public_key: Shared.PublicKey;
 
   signature: Shared.Signature;
 }
