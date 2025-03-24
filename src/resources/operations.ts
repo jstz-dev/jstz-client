@@ -36,7 +36,7 @@ export interface Operation {
   /**
    * The content of the operation
    */
-  content: Operation.DeployFunction | Operation.RunFunction;
+  content: Operation.DeployFunction | Operation.RunFunction | Operation.RevealLargePayloadOperation;
 
   /**
    * Nonce is used to avoid replay attacks.
@@ -88,6 +88,14 @@ export namespace Operation {
      * Smart function URI in the form tezos://{smart_function_address}/rest/of/path
      */
     uri: string;
+  }
+
+  export interface RevealLargePayloadOperation {
+    _type: 'RevealLargePayloadOperation';
+
+    reveal_type: string;
+
+    root_hash: string;
   }
 }
 
@@ -203,7 +211,10 @@ export interface OperationHashParams {
   /**
    * The content of the operation
    */
-  content: OperationHashParams.DeployFunction | OperationHashParams.RunFunction;
+  content:
+    | OperationHashParams.DeployFunction
+    | OperationHashParams.RunFunction
+    | OperationHashParams.RevealLargePayloadOperation;
 
   /**
    * Nonce is used to avoid replay attacks.
@@ -255,6 +266,14 @@ export namespace OperationHashParams {
      * Smart function URI in the form tezos://{smart_function_address}/rest/of/path
      */
     uri: string;
+  }
+
+  export interface RevealLargePayloadOperation {
+    _type: 'RevealLargePayloadOperation';
+
+    reveal_type: string;
+
+    root_hash: string;
   }
 }
 
