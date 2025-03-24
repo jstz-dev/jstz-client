@@ -32,7 +32,7 @@ describe('resource operations', () => {
         function_code: "export default (request) => new Response('Hello world!')",
       },
       nonce: 0,
-      source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
+      public_key: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
     });
     const rawResponse = await responsePromise.asResponse();
     expect(rawResponse).toBeInstanceOf(Response);
@@ -51,7 +51,7 @@ describe('resource operations', () => {
         function_code: "export default (request) => new Response('Hello world!')",
       },
       nonce: 0,
-      source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
+      public_key: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
     });
   });
 
@@ -64,9 +64,8 @@ describe('resource operations', () => {
           function_code: "export default (request) => new Response('Hello world!')",
         },
         nonce: 0,
-        source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
+        public_key: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
       },
-      public_key: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
       signature:
         'edsigtpe2oRBMFdrrwf99ETNjmBaRzNDexDjhancfQdz5phrwyPPhRi9L7kzJD4cAW1fFcsyTJcTDPP8W4H168QPQdGPKe7jrZB',
     });
@@ -88,9 +87,8 @@ describe('resource operations', () => {
           function_code: "export default (request) => new Response('Hello world!')",
         },
         nonce: 0,
-        source: 'tz1cD5CuvAALcxgypqBXcBQEA8dkLJivoFjU',
+        public_key: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
       },
-      public_key: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
       signature:
         'edsigtpe2oRBMFdrrwf99ETNjmBaRzNDexDjhancfQdz5phrwyPPhRi9L7kzJD4cAW1fFcsyTJcTDPP8W4H168QPQdGPKe7jrZB',
     });
