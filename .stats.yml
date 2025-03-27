@@ -1,2 +1,4 @@
 configured_endpoints: 12
 openapi_spec_url: https://storage.googleapis.com/stainless-sdk-openapi-specs/trilitech%2Fjstz-client-6945e4ce58e84f5bce486a39d35396bfaa910ec730111f6a2056226047be6c27.yml
+openapi_spec_hash: ed65b6e8d86941ace9d38dcf6e1de449
+config_hash: 988accea8481a880d62eaf9a3f29aed6
