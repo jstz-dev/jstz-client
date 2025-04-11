@@ -85,7 +85,7 @@ export namespace Operation {
     method: string;
 
     /**
-     * Smart function URI in the form tezos://{smart_function_address}/rest/of/path
+     * Smart function URI in the form jstz://{smart_function_address}/rest/of/path
      */
     uri: string;
   }
@@ -263,7 +263,7 @@ export namespace OperationHashParams {
     method: string;
 
     /**
-     * Smart function URI in the form tezos://{smart_function_address}/rest/of/path
+     * Smart function URI in the form jstz://{smart_function_address}/rest/of/path
      */
     uri: string;
   }
