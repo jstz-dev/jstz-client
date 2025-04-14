@@ -77,7 +77,7 @@ export interface Operation {
   /**
    * The content of the operation
    */
-  content: Operation.DeployFunction | Operation.RunFunction | Operation.RevealLargePayloadOperation;
+  content: Operation.DeployFunction | Operation.RunFunction | Operation.RevealLargePayload;
 
   /**
    * Nonce is used to avoid replay attacks.
@@ -131,8 +131,8 @@ export namespace Operation {
     uri: string;
   }
 
-  export interface RevealLargePayloadOperation {
-    _type: 'RevealLargePayloadOperation';
+  export interface RevealLargePayload {
+    _type: 'RevealLargePayload';
 
     reveal_type: string;
 
@@ -281,7 +281,7 @@ export interface OperationHashParams {
   content:
     | OperationHashParams.DeployFunction
     | OperationHashParams.RunFunction
-    | OperationHashParams.RevealLargePayloadOperation;
+    | OperationHashParams.RevealLargePayload;
 
   /**
    * Nonce is used to avoid replay attacks.
@@ -335,8 +335,8 @@ export namespace OperationHashParams {
     uri: string;
   }
 
-  export interface RevealLargePayloadOperation {
-    _type: 'RevealLargePayloadOperation';
+  export interface RevealLargePayload {
+    _type: 'RevealLargePayload';
 
     reveal_type: string;
 
