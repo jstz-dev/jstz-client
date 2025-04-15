@@ -46,7 +46,7 @@ export interface Operation {
   /**
    * The public key of the account which was used to sign the operation
    */
-  publicKey: Shared.PublicKey;
+  public_key: Shared.PublicKey;
 }
 
 export namespace Operation {
@@ -56,12 +56,12 @@ export namespace Operation {
     /**
      * Amount of tez to credit to the smart function account, debited from the sender
      */
-    accountCredit: number;
+    account_credit: number;
 
     /**
      * Smart function code
      */
-    functionCode: AccountsAPI.Code;
+    function_code: AccountsAPI.Code;
   }
 
   export interface RunFunction {
@@ -72,7 +72,7 @@ export namespace Operation {
     /**
      * Maximum amount of gas that is allowed for the execution of this operation
      */
-    gasLimit: number;
+    gas_limit: number;
 
     /**
      * Any valid HTTP headers
@@ -93,9 +93,9 @@ export namespace Operation {
   export interface RevealLargePayload {
     _type: 'RevealLargePayload';
 
-    revealType: string;
+    reveal_type: string;
 
-    rootHash: string;
+    root_hash: string;
   }
 }
 
@@ -137,7 +137,7 @@ export namespace Receipt {
       /**
        * Valid status code
        */
-      statusCode: number;
+      status_code: number;
     }
 
     export interface Deposit {
@@ -148,7 +148,7 @@ export namespace Receipt {
        */
       account: string;
 
-      updatedBalance: number;
+      updated_balance: number;
     }
 
     export interface FaDeposit {
@@ -159,9 +159,9 @@ export namespace Receipt {
        */
       receiver: string;
 
-      ticketBalance: number;
+      ticket_balance: number;
 
-      runFunction?: FaDeposit.RunFunction | null;
+      run_function?: FaDeposit.RunFunction | null;
     }
 
     export namespace FaDeposit {
@@ -176,14 +176,14 @@ export namespace Receipt {
         /**
          * Valid status code
          */
-        statusCode: number;
+        status_code: number;
       }
     }
 
     export interface FaWithdraw {
       _type: 'FaWithdraw';
 
-      outboxMessageId: string;
+      outbox_message_id: string;
 
       /**
        * Tezos Address
@@ -224,7 +224,7 @@ export interface OperationHashParams {
   /**
    * The public key of the account which was used to sign the operation
    */
-  publicKey: Shared.PublicKey;
+  public_key: Shared.PublicKey;
 }
 
 export namespace OperationHashParams {
@@ -234,12 +234,12 @@ export namespace OperationHashParams {
     /**
      * Amount of tez to credit to the smart function account, debited from the sender
      */
-    accountCredit: number;
+    account_credit: number;
 
     /**
      * Smart function code
      */
-    functionCode: AccountsAPI.Code;
+    function_code: AccountsAPI.Code;
   }
 
   export interface RunFunction {
@@ -250,7 +250,7 @@ export namespace OperationHashParams {
     /**
      * Maximum amount of gas that is allowed for the execution of this operation
      */
-    gasLimit: number;
+    gas_limit: number;
 
     /**
      * Any valid HTTP headers
@@ -271,9 +271,9 @@ export namespace OperationHashParams {
   export interface RevealLargePayload {
     _type: 'RevealLargePayload';
 
-    revealType: string;
+    reveal_type: string;
 
-    rootHash: string;
+    root_hash: string;
   }
 }
 
