@@ -93,8 +93,20 @@ export namespace Operation {
   export interface RevealLargePayload {
     _type: 'RevealLargePayload';
 
+    /**
+     * The original operation hash that is being revealed.
+     */
+    original_op_hash: Array<number>;
+
+    /**
+     * The type of operation being revealed.
+     */
     reveal_type: string;
 
+    /**
+     * The root hash of the preimage of the operation used to reveal the operation
+     * data.
+     */
     root_hash: string;
   }
 }
@@ -271,8 +283,20 @@ export namespace OperationHashParams {
   export interface RevealLargePayload {
     _type: 'RevealLargePayload';
 
+    /**
+     * The original operation hash that is being revealed.
+     */
+    original_op_hash: Array<number>;
+
+    /**
+     * The type of operation being revealed.
+     */
     reveal_type: string;
 
+    /**
+     * The root hash of the preimage of the operation used to reveal the operation
+     * data.
+     */
     root_hash: string;
   }
 }
