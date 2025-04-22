@@ -38,13 +38,13 @@ export class Accounts extends APIResource {
    * Get KV value under a given key path for an account. If `key` is not provided,
    * the empty key path will be used.
    */
-  getKv(address: string, query?: AccountGetKvParams, options?: Core.RequestOptions): Core.APIPromise<unknown>;
-  getKv(address: string, options?: Core.RequestOptions): Core.APIPromise<unknown>;
+  getKv(address: string, query?: AccountGetKvParams, options?: Core.RequestOptions): Core.APIPromise<string>;
+  getKv(address: string, options?: Core.RequestOptions): Core.APIPromise<string>;
   getKv(
     address: string,
     query: AccountGetKvParams | Core.RequestOptions = {},
     options?: Core.RequestOptions,
-  ): Core.APIPromise<unknown> {
+  ): Core.APIPromise<string> {
     if (isRequestOptions(query)) {
       return this.getKv(address, {}, query);
     }
@@ -115,7 +115,7 @@ export type Code = string;
 /**
  * A value stored in the Key-Value store. Always valid JSON.
  */
-export type KvValue = unknown;
+export type KvValue = string;
 
 export type Nonce = number;
 
