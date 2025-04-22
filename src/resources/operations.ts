@@ -236,12 +236,35 @@ export namespace Receipt {
     export interface FaWithdraw {
       _type: 'FaWithdraw';
 
-      outbox_message_id: string;
+      amount: number;
+
+      routing_info: FaWithdraw.RoutingInfo;
 
       /**
        * Tezos Address
        */
       source: string;
+
+      ticket_info: FaWithdraw.TicketInfo;
+    }
+
+    export namespace FaWithdraw {
+      export interface RoutingInfo {
+        proxy_l1_contract: string;
+
+        /**
+         * Tezos Address
+         */
+        receiver: string;
+      }
+
+      export interface TicketInfo {
+        id: number;
+
+        ticketer: string;
+
+        content?: Array<number> | null;
+      }
     }
   }
 
