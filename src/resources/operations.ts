@@ -118,7 +118,7 @@ export namespace Operation {
     /**
      * Any valid HTTP headers
      */
-    headers: RunFunction.Headers;
+    headers: Record<string, unknown>;
 
     /**
      * Any valid HTTP method
@@ -129,20 +129,6 @@ export namespace Operation {
      * Smart function URI in the form jstz://{smart_function_address}/rest/of/path
      */
     uri: string;
-  }
-
-  export namespace RunFunction {
-    /**
-     * Any valid HTTP headers
-     */
-    export interface Headers {
-      /**
-       * Amount in mutez to transfer on request
-       */
-      'X-JSTZ-TRANSFER'?: number;
-
-      [k: string]: unknown;
-    }
   }
 
   export interface RevealLargePayload {
@@ -199,26 +185,12 @@ export namespace Receipt {
       /**
        * Any valid HTTP headers
        */
-      headers: RunFunction.Headers;
+      headers: Record<string, unknown>;
 
       /**
        * Valid status code
        */
       statusCode: number;
-    }
-
-    export namespace RunFunction {
-      /**
-       * Any valid HTTP headers
-       */
-      export interface Headers {
-        /**
-         * Amount in mutez that was transferred on response
-         */
-        'X-JSTZ-AMOUNT'?: number;
-
-        [k: string]: unknown;
-      }
     }
 
     export interface Deposit {
@@ -252,26 +224,12 @@ export namespace Receipt {
         /**
          * Any valid HTTP headers
          */
-        headers: RunFunction.Headers;
+        headers: Record<string, unknown>;
 
         /**
          * Valid status code
          */
         statusCode: number;
-      }
-
-      export namespace RunFunction {
-        /**
-         * Any valid HTTP headers
-         */
-        export interface Headers {
-          /**
-           * Amount in mutez that was transferred on response
-           */
-          'X-JSTZ-AMOUNT'?: number;
-
-          [k: string]: unknown;
-        }
       }
     }
 
@@ -399,7 +357,7 @@ export namespace OperationHashParams {
     /**
      * Any valid HTTP headers
      */
-    headers: RunFunction.Headers;
+    headers: Record<string, unknown>;
 
     /**
      * Any valid HTTP method
@@ -410,20 +368,6 @@ export namespace OperationHashParams {
      * Smart function URI in the form jstz://{smart_function_address}/rest/of/path
      */
     uri: string;
-  }
-
-  export namespace RunFunction {
-    /**
-     * Any valid HTTP headers
-     */
-    export interface Headers {
-      /**
-       * Amount in mutez to transfer on request
-       */
-      'X-JSTZ-TRANSFER'?: number;
-
-      [k: string]: unknown;
-    }
   }
 
   export interface RevealLargePayload {
