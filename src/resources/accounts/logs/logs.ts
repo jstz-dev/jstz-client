@@ -30,7 +30,7 @@ export interface Log {
 
   level: 'ERROR' | 'WARN' | 'INFO' | 'LOG';
 
-  request_id: string;
+  requestId: string;
 
   text: string;
 }
