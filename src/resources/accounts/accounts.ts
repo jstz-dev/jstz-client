@@ -103,7 +103,7 @@ export namespace Account {
     export interface SmartFunction {
       amount: number;
 
-      function_code: AccountsAPI.Code;
+      functionCode: AccountsAPI.Code;
 
       nonce: AccountsAPI.Nonce;
     }
