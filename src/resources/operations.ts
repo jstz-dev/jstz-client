@@ -87,7 +87,7 @@ export interface Operation {
   /**
    * The public key of the account which was used to sign the operation
    */
-  public_key: Shared.PublicKey;
+  publicKey: Shared.PublicKey;
 }
 
 export namespace Operation {
@@ -97,12 +97,12 @@ export namespace Operation {
     /**
      * Amount of tez to credit to the smart function account, debited from the sender
      */
-    account_credit: number;
+    accountCredit: number;
 
     /**
      * Smart function code
      */
-    function_code: AccountsAPI.Code;
+    functionCode: AccountsAPI.Code;
   }
 
   export interface RunFunction {
@@ -113,7 +113,7 @@ export namespace Operation {
     /**
      * Maximum amount of gas that is allowed for the execution of this operation
      */
-    gas_limit: number;
+    gasLimit: number;
 
     /**
      * Any valid HTTP headers
@@ -137,18 +137,18 @@ export namespace Operation {
     /**
      * The original operation hash that is being revealed.
      */
-    original_op_hash: Array<number>;
+    originalOpHash: Array<number>;
 
     /**
      * The type of operation being revealed.
      */
-    reveal_type: string;
+    revealType: string;
 
     /**
      * The root hash of the preimage of the operation used to reveal the operation
      * data.
      */
-    root_hash: string;
+    rootHash: string;
   }
 }
 
@@ -190,7 +190,7 @@ export namespace Receipt {
       /**
        * Valid status code
        */
-      status_code: number;
+      statusCode: number;
     }
 
     export interface Deposit {
@@ -201,7 +201,7 @@ export namespace Receipt {
        */
       account: string;
 
-      updated_balance: number;
+      updatedBalance: number;
     }
 
     export interface FaDeposit {
@@ -212,9 +212,9 @@ export namespace Receipt {
        */
       receiver: string;
 
-      ticket_balance: number;
+      ticketBalance: number;
 
-      run_function?: FaDeposit.RunFunction | null;
+      runFunction?: FaDeposit.RunFunction | null;
     }
 
     export namespace FaDeposit {
@@ -229,7 +229,7 @@ export namespace Receipt {
         /**
          * Valid status code
          */
-        status_code: number;
+        statusCode: number;
       }
     }
 
@@ -238,19 +238,19 @@ export namespace Receipt {
 
       amount: number;
 
-      routing_info: FaWithdraw.RoutingInfo;
+      routingInfo: FaWithdraw.RoutingInfo;
 
       /**
        * Tezos Address
        */
       source: string;
 
-      ticket_info: FaWithdraw.TicketInfo;
+      ticketInfo: FaWithdraw.TicketInfo;
     }
 
     export namespace FaWithdraw {
       export interface RoutingInfo {
-        proxy_l1_contract: string;
+        proxyL1Contract: string;
 
         /**
          * Tezos Address
@@ -326,7 +326,7 @@ export interface OperationHashParams {
   /**
    * The public key of the account which was used to sign the operation
    */
-  public_key: Shared.PublicKey;
+  publicKey: Shared.PublicKey;
 }
 
 export namespace OperationHashParams {
@@ -336,12 +336,12 @@ export namespace OperationHashParams {
     /**
      * Amount of tez to credit to the smart function account, debited from the sender
      */
-    account_credit: number;
+    accountCredit: number;
 
     /**
      * Smart function code
      */
-    function_code: AccountsAPI.Code;
+    functionCode: AccountsAPI.Code;
   }
 
   export interface RunFunction {
@@ -352,7 +352,7 @@ export namespace OperationHashParams {
     /**
      * Maximum amount of gas that is allowed for the execution of this operation
      */
-    gas_limit: number;
+    gasLimit: number;
 
     /**
      * Any valid HTTP headers
@@ -376,18 +376,18 @@ export namespace OperationHashParams {
     /**
      * The original operation hash that is being revealed.
      */
-    original_op_hash: Array<number>;
+    originalOpHash: Array<number>;
 
     /**
      * The type of operation being revealed.
      */
-    reveal_type: string;
+    revealType: string;
 
     /**
      * The root hash of the preimage of the operation used to reveal the operation
      * data.
      */
-    root_hash: string;
+    rootHash: string;
   }
 }
 
