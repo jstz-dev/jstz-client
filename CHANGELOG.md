@@ -1,5 +1,61 @@
 # Changelog
 
+## 0.1.1-alpha.1 (2025-04-24)
+
+Full Changelog: [v0.1.1-alpha.0...v0.1.1-alpha.1](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.0...v0.1.1-alpha.1)
+
+### Features
+
+* add SKIP_BREW env var to ./scripts/bootstrap ([#40](https://github.com/jstz-dev/jstz-client/issues/40)) ([fcdb5dd](https://github.com/jstz-dev/jstz-client/commit/fcdb5dd28878a81089d4a898575d5a5e157ec8dd))
+* **api:** api update ([e91a2a6](https://github.com/jstz-dev/jstz-client/commit/e91a2a65103e28f735ab1a5d886c41390ca70a2c))
+* **api:** api update ([7fdf013](https://github.com/jstz-dev/jstz-client/commit/7fdf01337c36b812763d5979cb3cb96ce373ad3c))
+* **api:** api update ([3a4691b](https://github.com/jstz-dev/jstz-client/commit/3a4691b1bb511cfe102ecf9c81409d2e25c64df8))
+* **api:** api update ([527c7dc](https://github.com/jstz-dev/jstz-client/commit/527c7dcd0a4bf45b6a77229824bff9fc2dbf2b5a))
+* **api:** api update ([881d33f](https://github.com/jstz-dev/jstz-client/commit/881d33f87c84f97b554db16c7a5da61e4dd325a3))
+* **api:** api update ([74424af](https://github.com/jstz-dev/jstz-client/commit/74424af176240c2539cd6900f7d57a10d92dc9d3))
+* **api:** api update ([eb14569](https://github.com/jstz-dev/jstz-client/commit/eb14569d27a8bef087f0eee2cd3d8d7741a64d80))
+* **api:** api update ([54c01d0](https://github.com/jstz-dev/jstz-client/commit/54c01d03cbaf37471bfd1820852ac1b9d198a79c))
+* **api:** api update ([851b1b8](https://github.com/jstz-dev/jstz-client/commit/851b1b843efc87475ebcabfdc3d69e4a96fded7c))
+* **api:** api update ([636df72](https://github.com/jstz-dev/jstz-client/commit/636df72a7e2d88af65cde00c80bb65833d1fa03a))
+* **api:** api update ([8e1a714](https://github.com/jstz-dev/jstz-client/commit/8e1a71486a6b0ef41c5ed736d17c9e2394f9454a))
+* **api:** api update ([4569062](https://github.com/jstz-dev/jstz-client/commit/45690624cfc948ae1a3f4d9f4aa6c9e768624691))
+* **api:** api update ([dee2670](https://github.com/jstz-dev/jstz-client/commit/dee26700a0dd3fe69bc8db38ecf573ac879ebbf3))
+* **api:** api update ([#34](https://github.com/jstz-dev/jstz-client/issues/34)) ([362311b](https://github.com/jstz-dev/jstz-client/commit/362311b107cce988404a4baaf494183b591e63bb))
+* **api:** api update ([#47](https://github.com/jstz-dev/jstz-client/issues/47)) ([086838b](https://github.com/jstz-dev/jstz-client/commit/086838bc6bb8a5777c1980fa11302b04aaa985b8))
+* **api:** api update ([#48](https://github.com/jstz-dev/jstz-client/issues/48)) ([9a27663](https://github.com/jstz-dev/jstz-client/commit/9a27663e766a7df0e623cf4f8b43437dbb569c10))
+* **client:** accept RFC6838 JSON content types ([#41](https://github.com/jstz-dev/jstz-client/issues/41)) ([77324f3](https://github.com/jstz-dev/jstz-client/commit/77324f352519cf91c426bea6ba3be699cfd7569b))
+* **client:** send `X-Stainless-Timeout` header ([#36](https://github.com/jstz-dev/jstz-client/issues/36)) ([6adcf96](https://github.com/jstz-dev/jstz-client/commit/6adcf96cab2a4b2294cf4fd43f33ab281d8d6a0c))
+
+
+### Bug Fixes
+
+* **api:** improve type resolution when importing as a package ([#52](https://github.com/jstz-dev/jstz-client/issues/52)) ([a0a7e5b](https://github.com/jstz-dev/jstz-client/commit/a0a7e5b7d5c4d70d3be8089c0b99390ad57d5394))
+* avoid type error in certain environments ([#46](https://github.com/jstz-dev/jstz-client/issues/46)) ([21ea3cf](https://github.com/jstz-dev/jstz-client/commit/21ea3cf2f1ed93f3f8657bf130511287d19f139e))
+* **client:** fix export map for index exports ([#37](https://github.com/jstz-dev/jstz-client/issues/37)) ([56e59f8](https://github.com/jstz-dev/jstz-client/commit/56e59f831aa9fdca71ff4f58f7903910e2de6144))
+* **client:** send `X-Stainless-Timeout` in seconds ([#50](https://github.com/jstz-dev/jstz-client/issues/50)) ([809b1c9](https://github.com/jstz-dev/jstz-client/commit/809b1c904d163f0fdade9a189dc81e90ae2f4130))
+* **exports:** ensure resource imports don't require /index ([#43](https://github.com/jstz-dev/jstz-client/issues/43)) ([3c85924](https://github.com/jstz-dev/jstz-client/commit/3c8592424749287d57f79584adef100423d92ace))
+* **internal:** work around https://github.com/vercel/next.js/issues/76881 ([#49](https://github.com/jstz-dev/jstz-client/issues/49)) ([67743ac](https://github.com/jstz-dev/jstz-client/commit/67743ace1a70b17ed95e5809d1c5eb443d34c12f))
+* **mcp:** remove unused tools.ts ([#53](https://github.com/jstz-dev/jstz-client/issues/53)) ([18091e6](https://github.com/jstz-dev/jstz-client/commit/18091e60b2612e53b8befdb31c44464aac81b58b))
+
+
+### Chores
+
+* **ci:** add timeout thresholds for CI jobs ([016958a](https://github.com/jstz-dev/jstz-client/commit/016958a48bdbe3919c556dee55a46136f9f899ef))
+* **client:** minor internal fixes ([4ad539a](https://github.com/jstz-dev/jstz-client/commit/4ad539ab81a3004647be80ba1639a82769bc5474))
+* **exports:** cleaner resource index imports ([#44](https://github.com/jstz-dev/jstz-client/issues/44)) ([74f7905](https://github.com/jstz-dev/jstz-client/commit/74f79055def6b4994acc0c012179e1d4ed8bf788))
+* **exports:** stop using path fallbacks ([#45](https://github.com/jstz-dev/jstz-client/issues/45)) ([144cc78](https://github.com/jstz-dev/jstz-client/commit/144cc78834b4a38afbe4a59bd78ade5be06531cd))
+* **internal:** add aliases for Record and Array ([#51](https://github.com/jstz-dev/jstz-client/issues/51)) ([589ddf9](https://github.com/jstz-dev/jstz-client/commit/589ddf977851aa9ea8f57d3a5f0f23f7ac8b59c3))
+* **internal:** fix devcontainers setup ([#38](https://github.com/jstz-dev/jstz-client/issues/38)) ([d934b83](https://github.com/jstz-dev/jstz-client/commit/d934b83ffcce6787885653ccc3fa13293f349643))
+* **internal:** reduce CI branch coverage ([44dfff1](https://github.com/jstz-dev/jstz-client/commit/44dfff14d0407f99d65c6b156988d0acee9cc8c5))
+* **internal:** remove extra empty newlines ([#42](https://github.com/jstz-dev/jstz-client/issues/42)) ([84d8106](https://github.com/jstz-dev/jstz-client/commit/84d8106229e4cd0a5776eaf4fd3919de73e4bbaa))
+* **internal:** upload builds and expand CI branch coverage ([2d95932](https://github.com/jstz-dev/jstz-client/commit/2d9593200c3fcbdac2eb257531bb5384db86b6a3))
+* update SDK settings ([ce82ea7](https://github.com/jstz-dev/jstz-client/commit/ce82ea7f24d44c85eb9e53b0d3049bcfa1b09660))
+
+
+### Documentation
+
+* update URLs from stainlessapi.com to stainless.com ([#39](https://github.com/jstz-dev/jstz-client/issues/39)) ([b3a888b](https://github.com/jstz-dev/jstz-client/commit/b3a888b470542161ad8327cf830c91f6c884d06d))
+
 ## 0.1.1-alpha.0 (2025-02-03)
 
 Full Changelog: [v0.1.0-alpha.2...v0.1.1-alpha.0](https://github.com/jstz-dev/jstz-client/compare/v0.1.0-alpha.2...v0.1.1-alpha.0)
