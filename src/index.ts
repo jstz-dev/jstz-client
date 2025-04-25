@@ -204,6 +204,5 @@ export {
 
 export default Jstz;
 
-// Custom code here to avoid generated code conflicts
-import { initSignerExtension } from './custom/signer-extension';
-initSignerExtension();
+// Custom exports here to avoid codegen conflicts
+export { JstzSigner } from './custom/jstz-signer';
