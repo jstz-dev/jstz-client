@@ -21,5 +21,9 @@ else
   TAG="latest"
 fi
 
+# Publish as latest
+yarn publish --access public --tag "latest"
+
 # Publish with the appropriate tag
-yarn publish --access public --tag "$TAG"
+# Tag with $TAG when jstz is out of alpha
+# yarn publish --access public --tag "$TAG"
