@@ -203,3 +203,7 @@ export {
 } from './error';
 
 export default Jstz;
+
+// Custom code here to avoid generated code conflicts
+import { initSignerExtension } from './custom/signer-extension';
+initSignerExtension();
