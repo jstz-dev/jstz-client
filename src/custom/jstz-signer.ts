@@ -38,18 +38,18 @@ interface ExtensionResponse<T = unknown> {
   data: T;
 }
 
-export interface SignResponse {
+interface SignResponse {
   operation: Jstz.Operation;
   signature: string;
   publicKey: string;
   accountAddress: string;
 }
 
-export interface GetAddressResponse {
+interface GetAddressResponse {
   accountAddress: string;
 }
 
-export interface CheckStatusResponse {
+interface CheckStatusResponse {
   success: boolean;
 }
 
@@ -132,7 +132,6 @@ export class JstzSigner {
   }
 }
 
-export declare namespace JstzSigner {
   export {
     SignerResponseEventTypes,
     SignerRequestEventTypes,
@@ -143,6 +142,4 @@ export declare namespace JstzSigner {
     type SignResponse,
     type GetAddressResponse,
   };
-}
 
-export default JstzSigner;
