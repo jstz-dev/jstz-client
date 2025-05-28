@@ -9,8 +9,11 @@ The REST API documentation can be found on [jstz-dev.github.io](https://jstz-dev
 ## Installation
 
 ```sh
-npm install @jstz-dev/jstz-client
+npm install git+ssh://git@github.com:jstz-dev/jstz-client.git
 ```
+
+> [!NOTE]
+> Once this package is [published to npm](https://app.stainless.com/docs/guides/publish), this will become: `npm install @jstz-dev/jstz-client`
 
 ## Usage
 
@@ -71,7 +74,7 @@ async function main() {
 main();
 ```
 
-Error codes are as followed:
+Error codes are as follows:
 
 | Status Code | Error Type                 |
 | ----------- | -------------------------- |
