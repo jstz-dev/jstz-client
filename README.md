@@ -25,11 +25,7 @@ import Jstz from '@jstz-dev/jstz-client';
 
 const client = new Jstz();
 
-async function main() {
-  const code = await client.accounts.getCode('REPLACE_ME');
-}
-
-main();
+const code = await client.accounts.getCode('REPLACE_ME');
 ```
 
 ### Request & Response types
@@ -42,11 +38,7 @@ import Jstz from '@jstz-dev/jstz-client';
 
 const client = new Jstz();
 
-async function main() {
-  const code: string = await client.accounts.getCode('REPLACE_ME');
-}
-
-main();
+const code: string = await client.accounts.getCode('REPLACE_ME');
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -59,19 +51,15 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const code = await client.accounts.getCode('REPLACE_ME').catch(async (err) => {
-    if (err instanceof Jstz.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
-}
-
-main();
+const code = await client.accounts.getCode('REPLACE_ME').catch(async (err) => {
+  if (err instanceof Jstz.APIError) {
+    console.log(err.status); // 400
+    console.log(err.name); // BadRequestError
+    console.log(err.headers); // {server: 'nginx', ...}
+  } else {
+    throw err;
+  }
+});
 ```
 
 Error codes are as follows:
