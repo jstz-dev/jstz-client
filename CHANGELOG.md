@@ -1,5 +1,30 @@
 # Changelog
 
+## 0.2.0-alpha.1 (2025-06-04)
+
+Full Changelog: [v0.1.1-alpha.1...v0.2.0-alpha.1](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.1...v0.2.0-alpha.1)
+
+### Features
+
+* **api:** api update ([e432691](https://github.com/jstz-dev/jstz-client/commit/e432691f27d17859551b7f6f789c4ba5d861cc0d))
+
+
+### Chores
+
+* **ci:** bump node version for release workflows ([2a8d8a0](https://github.com/jstz-dev/jstz-client/commit/2a8d8a040072fe0317bae001a9fcec765a103669))
+* **ci:** only use depot for staging repos ([14e210d](https://github.com/jstz-dev/jstz-client/commit/14e210d8bde67f60bd6415fed4f132ffeaed8f64))
+* **docs:** grammar improvements ([c41274d](https://github.com/jstz-dev/jstz-client/commit/c41274db081a3709925bd6d55de03400dec83647))
+* **docs:** use top-level-await in example snippets ([9347d32](https://github.com/jstz-dev/jstz-client/commit/9347d329444faeb6643c79b115bf6b8850a56026))
+* improve publish-npm script --latest tag logic ([5793893](https://github.com/jstz-dev/jstz-client/commit/5793893fb4bd78603de7f4fd152c11f4dd4fc65b))
+* **internal:** codegen related update ([96fbf1d](https://github.com/jstz-dev/jstz-client/commit/96fbf1d3d640c3f1984d68460254faff2cacb5c2))
+* **publish:** always publish as latest while jstz client is in alpha ([c79d223](https://github.com/jstz-dev/jstz-client/commit/c79d2235592b825e2acbdf79c37a8b4358553210))
+
+
+### Documentation
+
+* add examples to tsdocs ([3f26e8e](https://github.com/jstz-dev/jstz-client/commit/3f26e8ea72b745ba7bbd4709084641f021caaa6f))
+* **readme:** fix typo ([5cf7805](https://github.com/jstz-dev/jstz-client/commit/5cf78057d99149b56673acb4e983e95df131d998))
+
 ## 0.1.1-alpha.1 (2025-04-24)
 
 Full Changelog: [v0.1.1-alpha.1...v0.1.1-alpha.1](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.1...v0.1.1-alpha.1)
