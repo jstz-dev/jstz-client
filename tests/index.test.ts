@@ -165,6 +165,28 @@ describe('instantiate client', () => {
       const client = new Jstz({});
       expect(client.baseURL).toEqual('http://localhost:8933');
     });
+
+    test('in request options', () => {
+      const client = new Jstz({});
+      expect(client.buildURL('/foo', null, 'http://localhost:5000/option')).toEqual(
+        'http://localhost:5000/option/foo',
+      );
+    });
+
+    test('in request options overridden by client options', () => {
+      const client = new Jstz({ baseURL: 'http://localhost:5000/client' });
+      expect(client.buildURL('/foo', null, 'http://localhost:5000/option')).toEqual(
+        'http://localhost:5000/client/foo',
+      );
+    });
+
+    test('in request options overridden by env variable', () => {
+      process.env['JSTZ_BASE_URL'] = 'http://localhost:5000/env';
+      const client = new Jstz({});
+      expect(client.buildURL('/foo', null, 'http://localhost:5000/option')).toEqual(
+        'http://localhost:5000/env/foo',
+      );
+    });
   });
 
   test('maxRetries option is correctly set', () => {

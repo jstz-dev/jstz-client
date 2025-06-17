@@ -109,6 +109,7 @@ export class Jstz extends Core.APIClient {
 
     super({
       baseURL: options.baseURL!,
+      baseURLOverridden: baseURL ? baseURL !== 'http://localhost:8933' : false,
       timeout: options.timeout ?? 60000 /* 1 minute */,
       httpAgent: options.httpAgent,
       maxRetries: options.maxRetries,
@@ -120,6 +121,13 @@ export class Jstz extends Core.APIClient {
 
   accounts: API.Accounts = new API.Accounts(this);
   operations: API.Operations = new API.Operations(this);
+
+  /**
+   * Check whether the base URL is set to its default.
+   */
+  #baseURLOverridden(): boolean {
+    return this.baseURL !== 'http://localhost:8933';
+  }
 
   protected override defaultQuery(): Core.DefaultQuery | undefined {
     return this._options.defaultQuery;
