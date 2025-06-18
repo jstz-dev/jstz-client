@@ -33,7 +33,7 @@ export class Logs extends APIResource {
 export interface Log {
   address: string;
 
-  level: 'ERROR' | 'WARN' | 'INFO' | 'LOG';
+  level: 'ERROR' | 'WARN' | 'INFO' | 'DEBUG';
 
   requestId: string;
 
