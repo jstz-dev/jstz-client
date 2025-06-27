@@ -77,7 +77,11 @@ export interface Operation {
   /**
    * The content of the operation
    */
-  content: Operation.DeployFunction | Operation.RunFunction | Operation.RevealLargePayload;
+  content:
+    | Operation.DeployFunction
+    | Operation.RunFunction
+    | Operation.RevealLargePayload
+    | Operation.OracleResponse;
 
   /**
    * Nonce is used to avoid replay attacks.
@@ -164,6 +168,20 @@ export namespace Operation {
      */
     rootHash: string;
   }
+
+  export interface OracleResponse {
+    _type: 'OracleResponse';
+
+    /**
+     * The request id of the OracleRequest that is being responded to
+     */
+    requestId: string;
+
+    /**
+     * The response to the OracleRequest
+     */
+    response: string;
+  }
 }
 
 export interface Receipt {
@@ -181,7 +199,8 @@ export namespace Receipt {
       | Success.RunFunction
       | Success.Deposit
       | Success.FaDeposit
-      | Success.FaWithdraw;
+      | Success.FaWithdraw
+      | Success.OracleResponse;
   }
 
   export namespace Success {
@@ -308,6 +327,12 @@ export namespace Receipt {
         content?: Array<number> | null;
       }
     }
+
+    export interface OracleResponse {
+      _type: 'OracleResponse';
+
+      requestId: number;
+    }
   }
 
   export interface Failure {
@@ -358,7 +383,8 @@ export interface OperationHashParams {
   content:
     | OperationHashParams.DeployFunction
     | OperationHashParams.RunFunction
-    | OperationHashParams.RevealLargePayload;
+    | OperationHashParams.RevealLargePayload
+    | OperationHashParams.OracleResponse;
 
   /**
    * Nonce is used to avoid replay attacks.
@@ -444,6 +470,20 @@ export namespace OperationHashParams {
      * data.
      */
     rootHash: string;
+  }
+
+  export interface OracleResponse {
+    _type: 'OracleResponse';
+
+    /**
+     * The request id of the OracleRequest that is being responded to
+     */
+    requestId: string;
+
+    /**
+     * The response to the OracleRequest
+     */
+    response: string;
   }
 }
 
