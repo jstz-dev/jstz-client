@@ -134,7 +134,7 @@ export namespace Operation {
     /**
      * The request id of the OracleRequest that is being responded to
      */
-    requestId: number;
+    requestId: string;
 
     /**
      * The response to the OracleRequest
@@ -411,7 +411,7 @@ export namespace OperationHashParams {
     /**
      * The request id of the OracleRequest that is being responded to
      */
-    requestId: number;
+    requestId: string;
 
     /**
      * The response to the OracleRequest
