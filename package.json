@@ -58,10 +58,6 @@
     "./shims/web.js",
     "./shims/web.mjs"
   ],
-  "imports": {
-    "@jstz-dev/jstz-client": ".",
-    "@jstz-dev/jstz-client/*": "./src/*"
-  },
   "exports": {
     "./_shims/auto/*": {
       "deno": {
