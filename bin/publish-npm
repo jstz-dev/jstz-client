@@ -58,8 +58,4 @@ else
 fi
 
 # Publish as latest
-yarn publish --access public --tag "latest"
-
-# Publish with the appropriate tag
-# Tag with $TAG when jstz is out of alpha
-# yarn publish --access public --tag "$TAG"
+yarn publish --tag "$TAG"
