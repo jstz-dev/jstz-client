@@ -25,13 +25,13 @@ describe('instantiate client', () => {
       defaultHeaders: { 'X-My-Default-Header': '2' },
     });
 
-    test('they are used in the request', () => {
-      const { req } = client.buildRequest({ path: '/foo', method: 'post' });
+    test('they are used in the request', async () => {
+      const { req } = await client.buildRequest({ path: '/foo', method: 'post' });
       expect((req.headers as Headers)['x-my-default-header']).toEqual('2');
     });
 
-    test('can ignore `undefined` and leave the default', () => {
-      const { req } = client.buildRequest({
+    test('can ignore `undefined` and leave the default', async () => {
+      const { req } = await client.buildRequest({
         path: '/foo',
         method: 'post',
         headers: { 'X-My-Default-Header': undefined },
@@ -39,8 +39,8 @@ describe('instantiate client', () => {
       expect((req.headers as Headers)['x-my-default-header']).toEqual('2');
     });
 
-    test('can be removed with `null`', () => {
-      const { req } = client.buildRequest({
+    test('can be removed with `null`', async () => {
+      const { req } = await client.buildRequest({
         path: '/foo',
         method: 'post',
         headers: { 'X-My-Default-Header': null },
@@ -165,6 +165,28 @@ describe('instantiate client', () => {
       const client = new Jstz({});
       expect(client.baseURL).toEqual('http://localhost:8933');
     });
+
+    test('in request options', () => {
+      const client = new Jstz({});
+      expect(client.buildURL('/foo', null, 'http://localhost:5000/option')).toEqual(
+        'http://localhost:5000/option/foo',
+      );
+    });
+
+    test('in request options overridden by client options', () => {
+      const client = new Jstz({ baseURL: 'http://localhost:5000/client' });
+      expect(client.buildURL('/foo', null, 'http://localhost:5000/option')).toEqual(
+        'http://localhost:5000/client/foo',
+      );
+    });
+
+    test('in request options overridden by env variable', () => {
+      process.env['JSTZ_BASE_URL'] = 'http://localhost:5000/env';
+      const client = new Jstz({});
+      expect(client.buildURL('/foo', null, 'http://localhost:5000/option')).toEqual(
+        'http://localhost:5000/env/foo',
+      );
+    });
   });
 
   test('maxRetries option is correctly set', () => {
@@ -181,20 +203,20 @@ describe('request building', () => {
   const client = new Jstz({});
 
   describe('Content-Length', () => {
-    test('handles multi-byte characters', () => {
-      const { req } = client.buildRequest({ path: '/foo', method: 'post', body: { value: '—' } });
+    test('handles multi-byte characters', async () => {
+      const { req } = await client.buildRequest({ path: '/foo', method: 'post', body: { value: '—' } });
       expect((req.headers as Record<string, string>)['content-length']).toEqual('20');
     });
 
-    test('handles standard characters', () => {
-      const { req } = client.buildRequest({ path: '/foo', method: 'post', body: { value: 'hello' } });
+    test('handles standard characters', async () => {
+      const { req } = await client.buildRequest({ path: '/foo', method: 'post', body: { value: 'hello' } });
       expect((req.headers as Record<string, string>)['content-length']).toEqual('22');
     });
   });
 
   describe('custom headers', () => {
-    test('handles undefined', () => {
-      const { req } = client.buildRequest({
+    test('handles undefined', async () => {
+      const { req } = await client.buildRequest({
         path: '/foo',
         method: 'post',
         body: { value: 'hello' },

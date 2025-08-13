@@ -12,6 +12,11 @@ export class Accounts extends APIResource {
 
   /**
    * Get account
+   *
+   * @example
+   * ```ts
+   * const account = await client.accounts.get('address');
+   * ```
    */
   get(address: string, options?: Core.RequestOptions): Core.APIPromise<Account> {
     return this._client.get(`/accounts/${address}`, options);
@@ -19,6 +24,13 @@ export class Accounts extends APIResource {
 
   /**
    * Get balance of an account
+   *
+   * @example
+   * ```ts
+   * const response = await client.accounts.getBalance(
+   *   'address',
+   * );
+   * ```
    */
   getBalance(address: string, options?: Core.RequestOptions): Core.APIPromise<AccountGetBalanceResponse> {
     return this._client.get(`/accounts/${address}/balance`, {
@@ -29,6 +41,11 @@ export class Accounts extends APIResource {
 
   /**
    * Get code of an account
+   *
+   * @example
+   * ```ts
+   * const code = await client.accounts.getCode('address');
+   * ```
    */
   getCode(address: string, options?: Core.RequestOptions): Core.APIPromise<string> {
     return this._client.get(`/accounts/${address}/code`, options);
@@ -37,6 +54,11 @@ export class Accounts extends APIResource {
   /**
    * Get KV value under a given key path for an account. If `key` is not provided,
    * the empty key path will be used.
+   *
+   * @example
+   * ```ts
+   * const kvValue = await client.accounts.getKv('address');
+   * ```
    */
   getKv(address: string, query?: AccountGetKvParams, options?: Core.RequestOptions): Core.APIPromise<unknown>;
   getKv(address: string, options?: Core.RequestOptions): Core.APIPromise<unknown>;
@@ -53,6 +75,11 @@ export class Accounts extends APIResource {
 
   /**
    * Get nonce of an account
+   *
+   * @example
+   * ```ts
+   * const nonce = await client.accounts.getNonce('address');
+   * ```
    */
   getNonce(address: string, options?: Core.RequestOptions): Core.APIPromise<Nonce> {
     return this._client.get(`/accounts/${address}/nonce`, options);
@@ -61,6 +88,13 @@ export class Accounts extends APIResource {
   /**
    * Get array of KV subkeys under a given key path for an account. If `key` is not
    * provided, the empty key path will be used.
+   *
+   * @example
+   * ```ts
+   * const response = await client.accounts.getSubkeys(
+   *   'address',
+   * );
+   * ```
    */
   getSubkeys(
     address: string,

@@ -1,5 +1,56 @@
 # Changelog
 
+## 0.1.1-alpha.3 (2025-08-13)
+
+Full Changelog: [v0.1.1-alpha.1...v0.1.1-alpha.3](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.1...v0.1.1-alpha.3)
+
+### Features
+
+* **api:** api update ([4257b28](https://github.com/jstz-dev/jstz-client/commit/4257b2800674ce8bb39012abcafd5605b93fe440))
+* **api:** api update ([92f6f49](https://github.com/jstz-dev/jstz-client/commit/92f6f496f048f9f5bc5728c9bdfd85918f3c243b))
+* **api:** api update ([84eec5c](https://github.com/jstz-dev/jstz-client/commit/84eec5c6500e0ee408eca5f9159da1ed6b339c67))
+* **api:** api update ([65df5e0](https://github.com/jstz-dev/jstz-client/commit/65df5e0016c7837e2f50588ba5c175834379374b))
+* **api:** api update ([8bb6df0](https://github.com/jstz-dev/jstz-client/commit/8bb6df05e402589ae46278e58772f5e1be5c8341))
+* **api:** api update ([e5a0219](https://github.com/jstz-dev/jstz-client/commit/e5a02192d5df38db0fc8a96e2de71ad07e217759))
+* **api:** api update ([b05ef25](https://github.com/jstz-dev/jstz-client/commit/b05ef2515fd7ffb7a187d6718bd38988e23dc94b))
+* **api:** api update ([27709bc](https://github.com/jstz-dev/jstz-client/commit/27709bc83681533bdd3671ad942964ba62a71b1c))
+* **api:** api update ([799ce3e](https://github.com/jstz-dev/jstz-client/commit/799ce3e82eed145ad8524e966862a53c3243d6b2))
+* **api:** api update ([d67c281](https://github.com/jstz-dev/jstz-client/commit/d67c2818f987e1cb22c4ac63ed490cc6f240053e))
+* **api:** api update ([ac37774](https://github.com/jstz-dev/jstz-client/commit/ac37774b408ed84b006e9ebcdc63a0178711fa1c))
+* **api:** api update ([e432691](https://github.com/jstz-dev/jstz-client/commit/e432691f27d17859551b7f6f789c4ba5d861cc0d))
+* **client:** add support for endpoint-specific base URLs ([b24069c](https://github.com/jstz-dev/jstz-client/commit/b24069cf4330ed0e12d177705cb9c2c9621061e9))
+
+
+### Bug Fixes
+
+* **client:** don't send `Content-Type` for bodyless methods ([8b84eac](https://github.com/jstz-dev/jstz-client/commit/8b84eace4c18498ac8f07ef52216f597ed416210))
+* publish script — handle NPM errors correctly ([586f421](https://github.com/jstz-dev/jstz-client/commit/586f421a3041f8945ff9a62c0cdd6d2d65a67f4f))
+
+
+### Chores
+
+* change publish docs url ([e75bf19](https://github.com/jstz-dev/jstz-client/commit/e75bf19a7cf52fa2f841b16f68baf51b5f3056f5))
+* **ci:** bump node version for release workflows ([2a8d8a0](https://github.com/jstz-dev/jstz-client/commit/2a8d8a040072fe0317bae001a9fcec765a103669))
+* **ci:** enable for pull requests ([3e2af34](https://github.com/jstz-dev/jstz-client/commit/3e2af34e12a6ab9cb3b2f1068a651dfcfada8101))
+* **ci:** only use depot for staging repos ([14e210d](https://github.com/jstz-dev/jstz-client/commit/14e210d8bde67f60bd6415fed4f132ffeaed8f64))
+* **docs:** grammar improvements ([c41274d](https://github.com/jstz-dev/jstz-client/commit/c41274db081a3709925bd6d55de03400dec83647))
+* **docs:** use top-level-await in example snippets ([9347d32](https://github.com/jstz-dev/jstz-client/commit/9347d329444faeb6643c79b115bf6b8850a56026))
+* improve publish-npm script --latest tag logic ([5793893](https://github.com/jstz-dev/jstz-client/commit/5793893fb4bd78603de7f4fd152c11f4dd4fc65b))
+* **internal:** codegen related update ([96fbf1d](https://github.com/jstz-dev/jstz-client/commit/96fbf1d3d640c3f1984d68460254faff2cacb5c2))
+* **internal:** make base APIResource abstract ([50cae76](https://github.com/jstz-dev/jstz-client/commit/50cae76a18d93b4c5882cb92b9f24ce75828ed57))
+* **internal:** remove redundant imports config ([ec73f54](https://github.com/jstz-dev/jstz-client/commit/ec73f547680975fc9a46fd553720fde2c3242c1c))
+* **internal:** update comment in script ([25081ef](https://github.com/jstz-dev/jstz-client/commit/25081efd44a6920565e0fc643b0bf181dbc15d44))
+* make some internal functions async ([1f76e29](https://github.com/jstz-dev/jstz-client/commit/1f76e295fb2269afc51e6ae135d714a4349dde28))
+* mention unit type in timeout docs ([f4e9398](https://github.com/jstz-dev/jstz-client/commit/f4e9398604ba2566e97e5e87d1d53f69c2385afe))
+* **publish:** always publish as latest while jstz client is in alpha ([c79d223](https://github.com/jstz-dev/jstz-client/commit/c79d2235592b825e2acbdf79c37a8b4358553210))
+* update @stainless-api/prism-cli to v5.15.0 ([d237d18](https://github.com/jstz-dev/jstz-client/commit/d237d1833376c87ce287e8f5a9d2f32cf4c5edb5))
+
+
+### Documentation
+
+* add examples to tsdocs ([3f26e8e](https://github.com/jstz-dev/jstz-client/commit/3f26e8ea72b745ba7bbd4709084641f021caaa6f))
+* **readme:** fix typo ([5cf7805](https://github.com/jstz-dev/jstz-client/commit/5cf78057d99149b56673acb4e983e95df131d998))
+
 ## 0.1.1-alpha.1 (2025-04-24)
 
 Full Changelog: [v0.1.1-alpha.1...v0.1.1-alpha.1](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.1...v0.1.1-alpha.1)

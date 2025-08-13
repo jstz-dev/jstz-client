@@ -16,6 +16,11 @@ export class Logs extends APIResource {
   /**
    * Returns a stream of console logs from the given Smart Function as Server-Sent
    * Events.
+   *
+   * @example
+   * ```ts
+   * await client.accounts.logs.stream('address');
+   * ```
    */
   stream(address: string, options?: Core.RequestOptions): Core.APIPromise<void> {
     return this._client.get(`/logs/${address}/stream`, {
@@ -28,7 +33,7 @@ export class Logs extends APIResource {
 export interface Log {
   address: string;
 
-  level: 'ERROR' | 'WARN' | 'INFO' | 'LOG';
+  level: 'ERROR' | 'WARN' | 'INFO' | 'DEBUG';
 
   requestId: string;
 

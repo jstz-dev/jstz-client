@@ -4,13 +4,16 @@
 
 This library provides convenient access to the Jstz REST API from server-side TypeScript or JavaScript.
 
-The REST API documentation can be found on [jstz-dev.github.io](https://jstz-dev.github.io/jstz/). The full API of this library can be found in [api.md](api.md).
+The REST API documentation can be found on [jstz.tezos.com](https://jstz.tezos.com/). The full API of this library can be found in [api.md](api.md).
 
 ## Installation
 
 ```sh
-npm install @jstz-dev/jstz-client
+npm install git+ssh://git@github.com:jstz-dev/jstz-client.git
 ```
+
+> [!NOTE]
+> Once this package is [published to npm](https://www.stainless.com/docs/guides/publish), this will become: `npm install @jstz-dev/jstz-client`
 
 ## Usage
 
@@ -22,11 +25,7 @@ import Jstz from '@jstz-dev/jstz-client';
 
 const client = new Jstz();
 
-async function main() {
-  const code = await client.accounts.getCode('REPLACE_ME');
-}
-
-main();
+const code = await client.accounts.getCode('REPLACE_ME');
 ```
 
 ### Request & Response types
@@ -39,11 +38,7 @@ import Jstz from '@jstz-dev/jstz-client';
 
 const client = new Jstz();
 
-async function main() {
-  const code: string = await client.accounts.getCode('REPLACE_ME');
-}
-
-main();
+const code: string = await client.accounts.getCode('REPLACE_ME');
 ```
 
 Documentation for each method, request param, and response field are available in docstrings and will appear on hover in most modern editors.
@@ -56,22 +51,18 @@ a subclass of `APIError` will be thrown:
 
 <!-- prettier-ignore -->
 ```ts
-async function main() {
-  const code = await client.accounts.getCode('REPLACE_ME').catch(async (err) => {
-    if (err instanceof Jstz.APIError) {
-      console.log(err.status); // 400
-      console.log(err.name); // BadRequestError
-      console.log(err.headers); // {server: 'nginx', ...}
-    } else {
-      throw err;
-    }
-  });
-}
-
-main();
+const code = await client.accounts.getCode('REPLACE_ME').catch(async (err) => {
+  if (err instanceof Jstz.APIError) {
+    console.log(err.status); // 400
+    console.log(err.name); // BadRequestError
+    console.log(err.headers); // {server: 'nginx', ...}
+  } else {
+    throw err;
+  }
+});
 ```
 
-Error codes are as followed:
+Error codes are as follows:
 
 | Status Code | Error Type                 |
 | ----------- | -------------------------- |

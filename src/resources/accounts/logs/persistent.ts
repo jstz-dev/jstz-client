@@ -9,6 +9,13 @@ export class Persistent extends APIResource {
   /**
    * Fetch console logs by address from the log store only if persistent logging is
    * enabled on this Jstz node instance
+   *
+   * @example
+   * ```ts
+   * const logs = await client.accounts.logs.persistent.list(
+   *   'address',
+   * );
+   * ```
    */
   list(
     address: string,
@@ -30,6 +37,14 @@ export class Persistent extends APIResource {
   /**
    * Fetch console logs by address and request id from the log store only if
    * persistent logging is enabled on this Jstz node instance
+   *
+   * @example
+   * ```ts
+   * const logs = await client.accounts.logs.persistent.get(
+   *   'address',
+   *   'request_id',
+   * );
+   * ```
    */
   get(
     address: string,

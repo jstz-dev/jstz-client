@@ -1,6 +1,6 @@
 {
   "name": "@jstz-dev/jstz-client",
-  "version": "0.1.1-alpha.1",
+  "version": "0.1.1-alpha.3",
   "description": "The official TypeScript library for the Jstz API",
   "author": "Jstz <contact@trili.tech>",
   "types": "dist/index.d.ts",
@@ -13,6 +13,9 @@
     "**/*"
   ],
   "private": false,
+  "publishConfig": {
+    "access": "public"
+  },
   "scripts": {
     "test": "./scripts/test",
     "build": "./scripts/build",
@@ -58,10 +61,6 @@
     "./shims/web.js",
     "./shims/web.mjs"
   ],
-  "imports": {
-    "@jstz-dev/jstz-client": ".",
-    "@jstz-dev/jstz-client/*": "./src/*"
-  },
   "exports": {
     "./_shims/auto/*": {
       "deno": {
