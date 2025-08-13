@@ -213,3 +213,6 @@ export {
 } from './error';
 
 export default Jstz;
+
+// Custom exports here to avoid codegen conflicts
+export { JstzSigner } from './custom/jstz-signer';
