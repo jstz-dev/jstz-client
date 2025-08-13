@@ -71,7 +71,10 @@ export namespace Operation {
   export interface RunFunction {
     _type: 'RunFunction';
 
-    body: Array<number> | null;
+    /**
+     * A HTTP body, which can be empty or contain data. Encoded as a base64 string.
+     */
+    body: string | null;
 
     /**
      * Maximum amount of gas that is allowed for the execution of this operation
@@ -172,7 +175,10 @@ export namespace Receipt {
     export interface RunFunction {
       _type: 'RunFunction';
 
-      body: Array<number> | null;
+      /**
+       * A HTTP body, which can be empty or contain data. Encoded as a base64 string.
+       */
+      body: string | null;
 
       /**
        * Any valid HTTP headers
@@ -225,7 +231,10 @@ export namespace Receipt {
 
     export namespace FaDeposit {
       export interface RunFunction {
-        body: Array<number> | null;
+        /**
+         * A HTTP body, which can be empty or contain data. Encoded as a base64 string.
+         */
+        body: string | null;
 
         /**
          * Any valid HTTP headers
@@ -348,7 +357,10 @@ export namespace OperationHashParams {
   export interface RunFunction {
     _type: 'RunFunction';
 
-    body: Array<number> | null;
+    /**
+     * A HTTP body, which can be empty or contain data. Encoded as a base64 string.
+     */
+    body: string | null;
 
     /**
      * Maximum amount of gas that is allowed for the execution of this operation
