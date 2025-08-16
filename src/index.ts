@@ -165,6 +165,7 @@ export class Jstz extends Core.APIClient {
 
 Jstz.Accounts = Accounts;
 Jstz.Operations = Operations;
+
 export declare namespace Jstz {
   export type RequestOptions = Core.RequestOptions;
 
