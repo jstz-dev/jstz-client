@@ -2,26 +2,18 @@
 
 ## 0.1.1-alpha.4 (2025-08-22)
 
-Full Changelog: [v0.1.1-alpha.4...v0.1.1-alpha.4](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.4...v0.1.1-alpha.4)
-
-### Chores
-
-* update SDK settings ([e2ce47f](https://github.com/jstz-dev/jstz-client/commit/e2ce47f60d8a28df473a8f1f655640447d4773da))
-
-## 0.1.1-alpha.4 (2025-08-22)
-
 Full Changelog: [v0.1.1-alpha.3...v0.1.1-alpha.4](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.3...v0.1.1-alpha.4)
 
 ### Features
 
 * **api:** api update ([f59e48d](https://github.com/jstz-dev/jstz-client/commit/f59e48de3d099f8ccdaad2a08f94249479ea9345))
 
-
 ### Chores
 
 * **deps:** update dependency node-fetch to v2.6.13 ([e718328](https://github.com/jstz-dev/jstz-client/commit/e71832824b8bbe0139b6814c53c59af54c909dc3))
 * **internal:** formatting change ([6cc47b4](https://github.com/jstz-dev/jstz-client/commit/6cc47b446fc2fda30e3f6f0612eb513447b98e51))
 * update SDK settings ([94e9c44](https://github.com/jstz-dev/jstz-client/commit/94e9c44afa68812b188244aa3b0b16d1a68b0640))
+* update SDK settings ([e2ce47f](https://github.com/jstz-dev/jstz-client/commit/e2ce47f60d8a28df473a8f1f655640447d4773da))
 
 ## 0.1.1-alpha.3 (2025-08-13)
 
