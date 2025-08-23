@@ -1,5 +1,18 @@
 # Changelog
 
+## 0.2.0-alpha.1 (2025-08-23)
+
+Full Changelog: [v0.1.1-alpha.4...v0.2.0-alpha.1](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.4...v0.2.0-alpha.1)
+
+### Features
+
+* **api:** api update ([7044ddb](https://github.com/jstz-dev/jstz-client/commit/7044ddbbc3928136c1e8cd7ecb4690f6f3963354))
+
+
+### Chores
+
+* update CI script ([1c3f41e](https://github.com/jstz-dev/jstz-client/commit/1c3f41e7700b220809e4e3bd65f4d81a46e53b9f))
+
 ## 0.1.1-alpha.4 (2025-08-22)
 
 Full Changelog: [v0.1.1-alpha.3...v0.1.1-alpha.4](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.3...v0.1.1-alpha.4)
