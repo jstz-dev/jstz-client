@@ -65,7 +65,7 @@ export namespace Operation {
     /**
      * Smart function code
      */
-    functionCode: AccountsAPI.Code;
+    functionCode: string;
   }
 
   export interface RunFunction {
@@ -351,7 +351,7 @@ export namespace OperationHashParams {
     /**
      * Smart function code
      */
-    functionCode: AccountsAPI.Code;
+    functionCode: string;
   }
 
   export interface RunFunction {
