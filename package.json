@@ -1,6 +1,6 @@
 {
   "name": "@jstz-dev/jstz-client",
-  "version": "0.1.1-alpha.4",
+  "version": "0.2.0-alpha.1",
   "description": "The official TypeScript library for the Jstz API",
   "author": "Jstz <contact@trili.tech>",
   "types": "dist/index.d.ts",

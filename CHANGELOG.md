@@ -1,5 +1,38 @@
 # Changelog
 
+## 0.2.0-alpha.1 (2025-10-24)
+
+Full Changelog: [v0.1.1-alpha.4...v0.2.0-alpha.1](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.4...v0.2.0-alpha.1)
+
+### Features
+
+* **api:** api update ([5674ee5](https://github.com/jstz-dev/jstz-client/commit/5674ee52f26e8a1a2120fda093b3e88ef6f81d0f))
+* **api:** api update ([1f13fc1](https://github.com/jstz-dev/jstz-client/commit/1f13fc104e6e5125d1eaa519356dc1766a340de7))
+* **api:** api update ([7044ddb](https://github.com/jstz-dev/jstz-client/commit/7044ddbbc3928136c1e8cd7ecb4690f6f3963354))
+
+
+### Bug Fixes
+
+* coerce nullable values to undefined ([7a76ce9](https://github.com/jstz-dev/jstz-client/commit/7a76ce9722f4754064d37a0869186c93116e59f2))
+
+
+### Performance Improvements
+
+* faster formatting ([eea1acd](https://github.com/jstz-dev/jstz-client/commit/eea1acd23e11514c7d6e24dbef8f0d3c727a3274))
+
+
+### Chores
+
+* ci build action ([8765ddb](https://github.com/jstz-dev/jstz-client/commit/8765ddb81c810a1a5fe112f0b9edeb206fde9412))
+* do not install brew dependencies in ./scripts/bootstrap by default ([f8abc21](https://github.com/jstz-dev/jstz-client/commit/f8abc21683ee031bc49de34e52ee76b7033e990b))
+* **internal:** codegen related update ([9230ddf](https://github.com/jstz-dev/jstz-client/commit/9230ddf813aed58940f81b666656758690b8e897))
+* **internal:** fix incremental formatting in some cases ([62dd47c](https://github.com/jstz-dev/jstz-client/commit/62dd47ce8c9712c5971294f3fe4dbb7a96f40c9e))
+* **internal:** ignore .eslintcache ([313c244](https://github.com/jstz-dev/jstz-client/commit/313c244d11e1dde9da6ee1a60ce52dd1a8eb9487))
+* **internal:** remove .eslintcache ([22adb58](https://github.com/jstz-dev/jstz-client/commit/22adb5801e606e62ca7aca6ed2a73a8ed7c645f2))
+* **internal:** remove deprecated `compilerOptions.baseUrl` from tsconfig.json ([fe69a09](https://github.com/jstz-dev/jstz-client/commit/fe69a09d13961b0d1cbfb7a5ac87b03cb773213c))
+* **internal:** use npm pack for build uploads ([91198e1](https://github.com/jstz-dev/jstz-client/commit/91198e1c6f07f8ae36cd9588cc045b8e02d32eed))
+* update CI script ([1c3f41e](https://github.com/jstz-dev/jstz-client/commit/1c3f41e7700b220809e4e3bd65f4d81a46e53b9f))
+
 ## 0.1.1-alpha.4 (2025-08-22)
 
 Full Changelog: [v0.1.1-alpha.3...v0.1.1-alpha.4](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.3...v0.1.1-alpha.4)
