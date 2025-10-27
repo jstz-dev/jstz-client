@@ -75,7 +75,6 @@ describe('resource operations', () => {
       },
       signature:
         'edsigtpe2oRBMFdrrwf99ETNjmBaRzNDexDjhancfQdz5phrwyPPhRi9L7kzJD4cAW1fFcsyTJcTDPP8W4H168QPQdGPKe7jrZB',
-      verifier: { Passkey: { authenticatorData: 'authenticatorData', clientDataJSON: 'clientDataJSON' } },
     });
   });
 });
