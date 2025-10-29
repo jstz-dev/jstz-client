@@ -381,35 +381,6 @@ export interface SignedOperation {
   inner: Operation;
 
   signature: Shared.Signature;
-
-  verifier?: SignedOperation.Verifier | null;
-}
-
-export namespace SignedOperation {
-  export interface Verifier {
-    /**
-     * A narrowed view of the raw AuthenticatorAssertionResponse returned by the
-     * passkey device. Only the fields necessary for verification are kept.
-     */
-    Passkey: Verifier.Passkey;
-  }
-
-  export namespace Verifier {
-    /**
-     * A narrowed view of the raw AuthenticatorAssertionResponse returned by the
-     * passkey device. Only the fields necessary for verification are kept.
-     */
-    export interface Passkey {
-      authenticatorData: string;
-
-      /**
-       * clientDataJSON contains metadata about the client and the cryptographic
-       * challenge in enoded in JSON. For the purposes of Jstz, the challenge is the
-       * operation hash. This field is base64url enoded
-       */
-      clientDataJSON: string;
-    }
-  }
 }
 
 export type OperationHashResponse = string;
@@ -532,35 +503,6 @@ export interface OperationInjectParams {
   inner: Operation;
 
   signature: Shared.Signature;
-
-  verifier?: OperationInjectParams.Verifier | null;
-}
-
-export namespace OperationInjectParams {
-  export interface Verifier {
-    /**
-     * A narrowed view of the raw AuthenticatorAssertionResponse returned by the
-     * passkey device. Only the fields necessary for verification are kept.
-     */
-    Passkey: Verifier.Passkey;
-  }
-
-  export namespace Verifier {
-    /**
-     * A narrowed view of the raw AuthenticatorAssertionResponse returned by the
-     * passkey device. Only the fields necessary for verification are kept.
-     */
-    export interface Passkey {
-      authenticatorData: string;
-
-      /**
-       * clientDataJSON contains metadata about the client and the cryptographic
-       * challenge in enoded in JSON. For the purposes of Jstz, the challenge is the
-       * operation hash. This field is base64url enoded
-       */
-      clientDataJSON: string;
-    }
-  }
 }
 
 export declare namespace Operations {
