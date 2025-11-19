@@ -106,7 +106,7 @@ export namespace Operation {
     /**
      * Smart function code
      */
-    functionCode: AccountsAPI.Code;
+    functionCode: string;
   }
 
   export interface RunFunction {
@@ -381,6 +381,35 @@ export interface SignedOperation {
   inner: Operation;
 
   signature: Shared.Signature;
+
+  verifier?: SignedOperation.Verifier | null;
+}
+
+export namespace SignedOperation {
+  export interface Verifier {
+    /**
+     * A narrowed view of the raw AuthenticatorAssertionResponse returned by the
+     * passkey device. Only the fields necessary for verification are kept.
+     */
+    Passkey: Verifier.Passkey;
+  }
+
+  export namespace Verifier {
+    /**
+     * A narrowed view of the raw AuthenticatorAssertionResponse returned by the
+     * passkey device. Only the fields necessary for verification are kept.
+     */
+    export interface Passkey {
+      authenticatorData: string;
+
+      /**
+       * clientDataJSON contains metadata about the client and the cryptographic
+       * challenge in encoded in JSON. For the purposes of Jstz, the challenge is the
+       * operation hash. This field is base64url encoded
+       */
+      clientDataJSON: string;
+    }
+  }
 }
 
 export type OperationHashResponse = string;
@@ -418,7 +447,7 @@ export namespace OperationHashParams {
     /**
      * Smart function code
      */
-    functionCode: AccountsAPI.Code;
+    functionCode: string;
   }
 
   export interface RunFunction {
@@ -503,6 +532,35 @@ export interface OperationInjectParams {
   inner: Operation;
 
   signature: Shared.Signature;
+
+  verifier?: OperationInjectParams.Verifier | null;
+}
+
+export namespace OperationInjectParams {
+  export interface Verifier {
+    /**
+     * A narrowed view of the raw AuthenticatorAssertionResponse returned by the
+     * passkey device. Only the fields necessary for verification are kept.
+     */
+    Passkey: Verifier.Passkey;
+  }
+
+  export namespace Verifier {
+    /**
+     * A narrowed view of the raw AuthenticatorAssertionResponse returned by the
+     * passkey device. Only the fields necessary for verification are kept.
+     */
+    export interface Passkey {
+      authenticatorData: string;
+
+      /**
+       * clientDataJSON contains metadata about the client and the cryptographic
+       * challenge in encoded in JSON. For the purposes of Jstz, the challenge is the
+       * operation hash. This field is base64url encoded
+       */
+      clientDataJSON: string;
+    }
+  }
 }
 
 export declare namespace Operations {

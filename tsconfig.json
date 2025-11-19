@@ -7,11 +7,10 @@
     "module": "commonjs",
     "moduleResolution": "node",
     "esModuleInterop": true,
-    "baseUrl": "./",
     "paths": {
-      "@jstz-dev/jstz-client/_shims/auto/*": ["src/_shims/auto/*-node"],
-      "@jstz-dev/jstz-client/*": ["src/*"],
-      "@jstz-dev/jstz-client": ["src/index.ts"]
+      "@jstz-dev/jstz-client/_shims/auto/*": ["./src/_shims/auto/*-node"],
+      "@jstz-dev/jstz-client/*": ["./src/*"],
+      "@jstz-dev/jstz-client": ["./src/index.ts"]
     },
     "noEmit": true,
 
@@ -32,7 +31,7 @@
     "noUncheckedIndexedAccess": true,
     "noImplicitOverride": true,
     "noPropertyAccessFromIndexSignature": true,
-		"isolatedModules": false,
+    "isolatedModules": false,
 
     "skipLibCheck": true
   }

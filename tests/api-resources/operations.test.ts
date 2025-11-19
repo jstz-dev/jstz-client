@@ -26,11 +26,7 @@ describe('resource operations', () => {
 
   test('hash: only required params', async () => {
     const responsePromise = client.operations.hash({
-      content: {
-        _type: 'DeployFunction',
-        accountCredit: 0,
-        functionCode: "export default (request) => new Response('Hello world!')",
-      },
+      content: { _type: 'DeployFunction', accountCredit: 0, functionCode: 'functionCode' },
       nonce: 0,
       publicKey: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
     });
@@ -45,11 +41,7 @@ describe('resource operations', () => {
 
   test('hash: required and optional params', async () => {
     const response = await client.operations.hash({
-      content: {
-        _type: 'DeployFunction',
-        accountCredit: 0,
-        functionCode: "export default (request) => new Response('Hello world!')",
-      },
+      content: { _type: 'DeployFunction', accountCredit: 0, functionCode: 'functionCode' },
       nonce: 0,
       publicKey: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
     });
@@ -58,11 +50,7 @@ describe('resource operations', () => {
   test('inject: only required params', async () => {
     const responsePromise = client.operations.inject({
       inner: {
-        content: {
-          _type: 'DeployFunction',
-          accountCredit: 0,
-          functionCode: "export default (request) => new Response('Hello world!')",
-        },
+        content: { _type: 'DeployFunction', accountCredit: 0, functionCode: 'functionCode' },
         nonce: 0,
         publicKey: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
       },
@@ -81,16 +69,13 @@ describe('resource operations', () => {
   test('inject: required and optional params', async () => {
     const response = await client.operations.inject({
       inner: {
-        content: {
-          _type: 'DeployFunction',
-          accountCredit: 0,
-          functionCode: "export default (request) => new Response('Hello world!')",
-        },
+        content: { _type: 'DeployFunction', accountCredit: 0, functionCode: 'functionCode' },
         nonce: 0,
         publicKey: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
       },
       signature:
         'edsigtpe2oRBMFdrrwf99ETNjmBaRzNDexDjhancfQdz5phrwyPPhRi9L7kzJD4cAW1fFcsyTJcTDPP8W4H168QPQdGPKe7jrZB',
+      verifier: { Passkey: { authenticatorData: 'authenticatorData', clientDataJSON: 'clientDataJSON' } },
     });
   });
 });
