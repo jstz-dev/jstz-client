@@ -2,6 +2,14 @@
 
 ## 0.1.1-alpha.5 (2025-11-19)
 
+Full Changelog: [v0.1.1-alpha.5...v0.1.1-alpha.5](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.5...v0.1.1-alpha.5)
+
+### Chores
+
+* update SDK settings ([8e8f764](https://github.com/jstz-dev/jstz-client/commit/8e8f764fad440de76c435efae661df31aa28509f))
+
+## 0.1.1-alpha.5 (2025-11-19)
+
 Full Changelog: [v0.1.1-alpha.4...v0.1.1-alpha.5](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.4...v0.1.1-alpha.5)
 
 ### Features
