@@ -49,6 +49,7 @@ export class Operations extends APIResource {
   ): Promise<InjectedOperationReceipt<T>> {
     const intervalRate = options?.pollInterval ?? 3000;
     const startTime = Date.now();
+    const deadline = startTime + (options?.timeout ?? this._client.timeout);
     return new Promise((resolve, reject) => {
       const interval = setInterval(async () => {
         try {
@@ -58,15 +59,21 @@ export class Operations extends APIResource {
             const receipt = parseInjectedOperationReceipt<T>(await call);
             clearInterval(interval);
             resolve(receipt);
-          }
-          const now = Date.now();
-          const elapsedTime = now - startTime;
-          if (elapsedTime > (options?.timeout ?? 30000)) {
+            return;
+          } else if (response.status === 404) {
+            return;
+          } else if (Date.now() > deadline) {
             throw new Error('Poll timeout');
+          } else {
+            throw new Error(`Unexpected status ${response.status}`);
           }
         } catch (err) {
-          clearInterval(interval);
-          reject(err);
+          if (err instanceof Error && err.message.includes('404 status code')) {
+            return;
+          } else {
+            clearInterval(interval);
+            reject(err);
+          }
         }
       }, intervalRate);
     });
