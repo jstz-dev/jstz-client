@@ -26,7 +26,11 @@ describe('resource operations', () => {
 
   test('hash: only required params', async () => {
     const responsePromise = client.operations.hash({
-      content: { _type: 'DeployFunction', accountCredit: 0, functionCode: 'functionCode' },
+      content: {
+        _type: 'DeployFunction',
+        accountCredit: 0,
+        functionCode: 'functionCode',
+      },
       nonce: 0,
       publicKey: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
     });
@@ -41,7 +45,11 @@ describe('resource operations', () => {
 
   test('hash: required and optional params', async () => {
     const response = await client.operations.hash({
-      content: { _type: 'DeployFunction', accountCredit: 0, functionCode: 'functionCode' },
+      content: {
+        _type: 'DeployFunction',
+        accountCredit: 0,
+        functionCode: 'functionCode',
+      },
       nonce: 0,
       publicKey: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
     });
@@ -50,7 +58,11 @@ describe('resource operations', () => {
   test('inject: only required params', async () => {
     const responsePromise = client.operations.inject({
       inner: {
-        content: { _type: 'DeployFunction', accountCredit: 0, functionCode: 'functionCode' },
+        content: {
+          _type: 'DeployFunction',
+          accountCredit: 0,
+          functionCode: 'functionCode',
+        },
         nonce: 0,
         publicKey: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
       },
@@ -69,7 +81,11 @@ describe('resource operations', () => {
   test('inject: required and optional params', async () => {
     const response = await client.operations.inject({
       inner: {
-        content: { _type: 'DeployFunction', accountCredit: 0, functionCode: 'functionCode' },
+        content: {
+          _type: 'DeployFunction',
+          accountCredit: 0,
+          functionCode: 'functionCode',
+        },
         nonce: 0,
         publicKey: 'edpkukK9ecWxib28zi52nvbXTdsYt8rYcvmt5bdH8KjipWXm8sH3Qi',
       },

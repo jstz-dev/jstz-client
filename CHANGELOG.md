@@ -1,5 +1,31 @@
 # Changelog
 
+## 0.2.0-alpha.1 (2026-05-20)
+
+Full Changelog: [v0.1.1-alpha.5...v0.2.0-alpha.1](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.5...v0.2.0-alpha.1)
+
+### Features
+
+* **api:** api update ([706f39a](https://github.com/jstz-dev/jstz-client/commit/706f39ab5aa320d83b466984903bde8136d81186))
+* **api:** api update ([fa68276](https://github.com/jstz-dev/jstz-client/commit/fa68276ce83012760d9243baa6f1c967e122e8d8))
+* **api:** api update ([14ca32d](https://github.com/jstz-dev/jstz-client/commit/14ca32d2c341af71b25f67ec4196696505e48385))
+
+
+### Bug Fixes
+
+* **mcp:** correct code tool API endpoint ([569a473](https://github.com/jstz-dev/jstz-client/commit/569a4734e537ca667ab05a42a0b3085ae36bb3a5))
+* **mcp:** return correct lines on typescript errors ([7e79644](https://github.com/jstz-dev/jstz-client/commit/7e796445736219c33a67e8385456425a19d50271))
+
+
+### Chores
+
+* break long lines in snippets into multiline ([c307650](https://github.com/jstz-dev/jstz-client/commit/c30765039a12b40c1a80e134bcb9cd07c89f5044))
+* **internal:** codegen related update ([c6c4cb1](https://github.com/jstz-dev/jstz-client/commit/c6c4cb1428d03d8ea8738624d2201a6fc25b2651))
+* **internal:** codegen related update ([ca343dd](https://github.com/jstz-dev/jstz-client/commit/ca343dd000fd64d3fa1b249b82bfa835ae1e6587))
+* **internal:** codegen related update ([ea8d370](https://github.com/jstz-dev/jstz-client/commit/ea8d3700866d86ee9a3051c37b9ca3e561739410))
+* **internal:** update `actions/checkout` version ([d3724f4](https://github.com/jstz-dev/jstz-client/commit/d3724f4f96a1f1734eb22203d9247d249124d484))
+* **internal:** upgrade babel, qs, js-yaml ([f5c4762](https://github.com/jstz-dev/jstz-client/commit/f5c4762b613fa38676021df65c7cfa3b58b2990a))
+
 ## 0.1.1-alpha.5 (2025-11-19)
 
 Full Changelog: [v0.1.1-alpha.5...v0.1.1-alpha.5](https://github.com/jstz-dev/jstz-client/compare/v0.1.1-alpha.5...v0.1.1-alpha.5)
